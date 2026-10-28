@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="6dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="#CBD5E1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvClassRank"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:text="#1"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="#7B1FA2"
+            android:gravity="center"
+            android:layout_marginEnd="10dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvClassStudentName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Student Name"
+                android:textSize="13.5sp"
+                android:textStyle="bold"
+                android:textColor="#1E293B" />
+
+            <TextView
+                android:id="@+id/tvClassStudentDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SR: 101 | Class: 5"
+                android:textSize="10.5sp"
+                android:textColor="#64748B" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvClassStudentScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="450 / 600 (75.0%) | PASS"
+            android:textSize="11.5sp"
+            android:textStyle="bold"
+            android:textColor="#0F172A"
+            android:gravity="end" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

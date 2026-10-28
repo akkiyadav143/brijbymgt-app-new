@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="#CBD5E1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvItemExamName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Half Yearly Exam 2024-25"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#1E293B"
+                android:layout_marginBottom="2dp" />
+
+            <TextView
+                android:id="@+id/tvItemExamDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type: Half Yearly | Class: Class 5 | Session: 2024-2025"
+                android:textSize="11sp"
+                android:textColor="#64748B"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/tvItemExamStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Active"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="#16A34A" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnItemDeleteExam"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="🗑"
+            android:textSize="14sp"
+            app:backgroundTint="#EF4444"
+            android:padding="0dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

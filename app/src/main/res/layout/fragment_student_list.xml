@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F8FAFC">
+
+    <!-- TOP FILTERS & SEARCH SECTION (SCROLLABLE WHEN KEYBOARD OPENS) -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="12dp">
+
+            <!-- CLASS FILTER STABLE RADIO BUTTONS (2 ROWS) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="6dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="4dp"
+                android:background="#FFFFFF">
+
+                <!-- CLASS FILTER ROW 1: ALL, CL 1, CL 2, CL 3, CL 4 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="3dp">
+
+                    <Button android:id="@+id/btnListFilterAll" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:text="◉ All" android:textSize="9.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+                    <Button android:id="@+id/btnListFilterCl1" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:text="○ CL 1" android:textSize="9.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+                    <Button android:id="@+id/btnListFilterCl2" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:text="○ CL 2" android:textSize="9.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+                    <Button android:id="@+id/btnListFilterCl3" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:text="○ CL 3" android:textSize="9.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+                    <Button android:id="@+id/btnListFilterCl4" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:text="○ CL 4" android:textSize="9.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" />
+
+                </LinearLayout>
+
+                <!-- CLASS FILTER ROW 2: CL 5, CL 6, CL 7, CL 8 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button android:id="@+id/btnListFilterCl5" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:text="○ CL 5" android:textSize="9.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+                    <Button android:id="@+id/btnListFilterCl6" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:text="○ CL 6" android:textSize="9.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+                    <Button android:id="@+id/btnListFilterCl7" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:text="○ CL 7" android:textSize="9.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+                    <Button android:id="@+id/btnListFilterCl8" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:text="○ CL 8" android:textSize="9.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ORDER & SORT BY CHIP SECTION (BELOW CLASS FILTERS) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="6dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:background="#F1F5F9">
+
+                <!-- ROW 1: ORDER CHIPS (Ascending / Descending) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="2dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Order:"
+                        android:textSize="10.5sp"
+                        android:textStyle="bold"
+                        android:textColor="#334155"
+                        android:layout_marginEnd="4dp" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroupOrder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:singleSelection="true"
+                        app:selectionRequired="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipOrderAsc"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:text="▲ Ascending"
+                            android:textSize="9.5sp"
+                            android:checked="true" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipOrderDesc"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:text="▼ Descending"
+                            android:textSize="9.5sp" />
+
+                    </com.google.android.material.chip.ChipGroup>
+
+                </LinearLayout>
+
+                <!-- ROW 2: SORT BY CHIPS (HORIZONTAL SCROLL) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sort By:"
+                        android:textSize="10.5sp"
+                        android:textStyle="bold"
+                        android:textColor="#334155"
+                        android:layout_marginEnd="4dp" />
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none"
+                        android:overScrollMode="never">
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/chipGroupSortBy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:singleLine="true"
+                            app:singleSelection="true">
+
+                            <com.google.android.material.chip.Chip android:id="@+id/chipSortName" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="30dp" android:text="Student Name" android:textSize="9.5sp" />
+                            <com.google.android.material.chip.Chip android:id="@+id/chipSortAdhar" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="30dp" android:text="Student Aadhaar" android:textSize="9.5sp" />
+                            <com.google.android.material.chip.Chip android:id="@+id/chipSortSrNumber" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="30dp" android:text="Sr Number" android:textSize="9.5sp" />
+                            <com.google.android.material.chip.Chip android:id="@+id/chipSortSrNo" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="30dp" android:text="Sr No" android:textSize="9.5sp" />
+                            <com.google.android.material.chip.Chip android:id="@+id/chipSortUid" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="30dp" android:text="Unique ID" android:textSize="9.5sp" />
+                            <com.google.android.material.chip.Chip android:id="@+id/chipSortPen" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="30dp" android:text="PEN No" android:textSize="9.5sp" />
+                            <com.google.android.material.chip.Chip android:id="@+id/chipSortAapar" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="30dp" android:text="AAPAR ID" android:textSize="9.5sp" />
+                            <com.google.android.material.chip.Chip android:id="@+id/chipSortClass" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="30dp" android:text="Class" android:textSize="9.5sp" />
+                            <com.google.android.material.chip.Chip android:id="@+id/chipSortMale" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="30dp" android:text="Male" android:textSize="9.5sp" />
+                            <com.google.android.material.chip.Chip android:id="@+id/chipSortFemale" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="30dp" android:text="Female" android:textSize="9.5sp" />
+                            <com.google.android.material.chip.Chip android:id="@+id/chipSortGen" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="30dp" android:text="GEN" android:textSize="9.5sp" />
+                            <com.google.android.material.chip.Chip android:id="@+id/chipSortObc" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="30dp" android:text="OBC" android:textSize="9.5sp" />
+                            <com.google.android.material.chip.Chip android:id="@+id/chipSortSc" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="30dp" android:text="SC" android:textSize="9.5sp" />
+                            <com.google.android.material.chip.Chip android:id="@+id/chipSortSt" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="30dp" android:text="ST" android:textSize="9.5sp" />
+                            <com.google.android.material.chip.Chip android:id="@+id/chipSortMinority" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="30dp" android:text="MINORITY" android:textSize="9.5sp" />
+
+                        </com.google.android.material.chip.ChipGroup>
+                    </HorizontalScrollView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- SEARCH FIELD RADIO BUTTONS (2 ROWS) & SEARCH BOX -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="6dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="6dp"
+                android:background="#FFFFFF">
+
+                <!-- ROW 1 OF SEARCH FIELD RADIOS -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="3dp">
+
+                    <Button android:id="@+id/btnSearchFieldAll" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:text="🔘 All" android:textSize="9sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+                    <Button android:id="@+id/btnSearchFieldSrNumber" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1.2" android:text="○ SR Number" android:textSize="9sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+                    <Button android:id="@+id/btnSearchFieldStudentName" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1.3" android:text="○ Student Name" android:textSize="9sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+                    <Button android:id="@+id/btnSearchFieldAadhaar" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1.2" android:text="○ Aadhaar" android:textSize="9sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" />
+
+                </LinearLayout>
+
+                <!-- ROW 2 OF SEARCH FIELD RADIOS -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="4dp">
+
+                    <Button android:id="@+id/btnSearchFieldMobile" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:text="○ Mobile No" android:textSize="9sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+                    <Button android:id="@+id/btnSearchFieldFather" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:text="○ Father Name" android:textSize="9sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+                    <Button android:id="@+id/btnSearchFieldMother" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:text="○ Mother Name" android:textSize="9sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/etSearchBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:hint="Type to search..."
+                    android:paddingHorizontal="10dp"
+                    android:textSize="13sp"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- LIST COUNT DISPLAY (NUMBER IN HARLEQUIN GREEN #3FFF00) -->
+    <TextView
+        android:id="@+id/tvListRecordCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Record Found: 0"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="6dp"
+        android:textSize="12.5sp"
+        android:textStyle="bold"
+        android:background="#0F172A"
+        android:textColor="#FFFFFF" />
+
+    <!-- RECYCLERVIEW -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvStudentList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="4dp" />
+
+</LinearLayout>

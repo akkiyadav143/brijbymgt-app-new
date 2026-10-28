@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingVertical="6dp"
+    android:paddingHorizontal="8dp"
+    android:background="#FFFFFF"
+    android:layout_marginBottom="2dp">
+
+    <TextView
+        android:id="@+id/tvRowIndex"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:text="#2"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:textColor="#64748B" />
+
+    <TextView
+        android:id="@+id/tvRowStudentName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Rahul Kumar"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textColor="#0F172A" />
+
+    <TextView
+        android:id="@+id/tvRowClass"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="Class 5"
+        android:textSize="11sp"
+        android:textColor="#334155" />
+
+    <TextView
+        android:id="@+id/tvRowSrNumber"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="1025"
+        android:textSize="11sp"
+        android:textColor="#334155" />
+
+    <TextView
+        android:id="@+id/tvRowStatusBadge"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="Valid"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:background="#2E7D32"
+        android:paddingHorizontal="6dp"
+        android:paddingVertical="2dp"
+        android:gravity="center" />
+
+</LinearLayout>

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- HEADER TITLE -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Form S02/UDISE / Format for Student ADDITION in UDISE+ for Class-2 to Class-12 by Block/District/State"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#0D47A1"
+            android:layout_marginBottom="12dp" />
+
+        <!-- TOP INPUT FIELDS (CACHE SAVING/LOADING VIA "so2_prefs") -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#CBD5E1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SCHOOL &amp; LOCATION DETAILS"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="#1E293B"
+                    android:layout_marginBottom="8dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSo2UdiseCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="UDISE Code"
+                        android:inputType="text"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSo2SchoolName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="School Name"
+                        android:inputType="text"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etSo2DistrictName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="UDISE District Name"
+                            android:inputType="text"
+                            android:textSize="12sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etSo2BlockName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="UDISE Block Name"
+                            android:inputType="text"
+                            android:textSize="12sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- STUDENT SEARCH / SELECTION CARD FROM DATABASE -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#CBD5E1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Select Student from Database (Auto-fill data):"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="#1E293B"
+                    android:layout_marginBottom="6dp" />
+
+                <RadioGroup
+                    android:id="@+id/rgSo2SearchType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="6dp">
+
+                    <RadioButton
+                        android:id="@+id/rbSo2Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Student Name"
+                        android:textSize="12sp"
+                        android:layout_marginEnd="24dp" />
+
+                    <RadioButton
+                        android:id="@+id/rbSo2SrNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="SR Number"
+                        android:textSize="12sp" />
+                </RadioGroup>
+
+                <CheckBox
+                    android:id="@+id/cbSo2FilterNoPen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Show only students without PEN No (जिनका पेन न० नहीं है)"
+                    android:textSize="11.5sp"
+                    android:textColor="#D32F2F"
+                    android:layout_marginBottom="8dp" />
+
+                <EditText
+                    android:id="@+id/etSo2StudentSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@android:drawable/editbox_background_normal"
+                    android:hint="Search student by Name..."
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingHorizontal="10dp"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="6dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBarSo2"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:layout_marginBottom="6dp" />
+
+                <TextView
+                    android:id="@+id/tvSo2NoStudentFound"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No Student Found"
+                    android:textColor="#D32F2F"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="6dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSo2StudentSearchResults"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:visibility="gone"
+                    android:background="#F1F5F9" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- STUDENT ENTRY ROWS SECTION -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="STUDENT ADDITION ENTRIES"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#333333" />
+
+            <Button
+                android:id="@+id/btnAddSo2Student"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="+ Add Student"
+                android:textSize="11sp"
+                app:backgroundTint="#1565C0" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llSo2StudentRowsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp" />
+
+        <!-- ACTION BUTTONS -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+
+            <Button
+                android:id="@+id/btnSaveSo2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="SAVE"
+                android:textSize="11sp"
+                app:backgroundTint="#2E7D32"
+                android:layout_marginEnd="3dp" />
+
+            <Button
+                android:id="@+id/btnResetSo2"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="RESET"
+                android:textSize="11sp"
+                android:layout_marginEnd="3dp" />
+
+            <Button
+                android:id="@+id/btnShareSo2Pdf"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:text="SHARE PDF"
+                android:textSize="11sp"
+                android:layout_marginEnd="3dp" />
+
+            <Button
+                android:id="@+id/btnPrintSo2Pdf"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:text="PRINT PDF"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <!-- HEADER BAR (REDUCED HEADING SIZE 15sp) -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CL 0 &amp; CL PASS RECORDS"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:background="#2E7D32"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="8dp" />
+
+    <!-- CLASS FILTERS (REDUCED SIZE BUTTONS: height 34dp, text 10sp) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="6dp"
+        android:background="#FFFFFF">
+
+        <Button android:id="@+id/btnCl0FilterAll" android:layout_width="0dp" android:layout_height="34dp" android:layout_weight="1" android:text="◉ All" android:textSize="10sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="3dp" />
+        <Button android:id="@+id/btnCl0Filter0" android:layout_width="0dp" android:layout_height="34dp" android:layout_weight="1" android:text="○ CL 0" android:textSize="10sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="3dp" />
+        <Button android:id="@+id/btnCl0FilterPass" android:layout_width="0dp" android:layout_height="34dp" android:layout_weight="1" android:text="○ CL Pass" android:textSize="10sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" />
+
+    </LinearLayout>
+
+    <!-- SEARCH OPTIONS (2 ROWS WITHOUT "Search Field:" WORD) & SEARCH BOX -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="6dp"
+        android:background="#FFFFFF"
+        android:elevation="2dp">
+
+        <!-- ROW 1 OF SEARCH RADIOS -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="4dp">
+
+            <Button android:id="@+id/btnCl0SearchAll" android:layout_width="0dp" android:layout_height="34dp" android:layout_weight="1" android:text="🔘 All" android:textSize="9.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+            <Button android:id="@+id/btnCl0SearchSrNumber" android:layout_width="0dp" android:layout_height="34dp" android:layout_weight="1.2" android:text="○ SR Number" android:textSize="9.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+            <Button android:id="@+id/btnCl0SearchStudentName" android:layout_width="0dp" android:layout_height="34dp" android:layout_weight="1.3" android:text="○ Student Name" android:textSize="9.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+            <Button android:id="@+id/btnCl0SearchAadhaar" android:layout_width="0dp" android:layout_height="34dp" android:layout_weight="1.2" android:text="○ Aadhaar" android:textSize="9.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" />
+
+        </LinearLayout>
+
+        <!-- ROW 2 OF SEARCH RADIOS -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="6dp">
+
+            <Button android:id="@+id/btnCl0SearchMobile" android:layout_width="0dp" android:layout_height="34dp" android:layout_weight="1" android:text="○ Mobile No" android:textSize="9.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+            <Button android:id="@+id/btnCl0SearchFather" android:layout_width="0dp" android:layout_height="34dp" android:layout_weight="1" android:text="○ Father Name" android:textSize="9.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+            <Button android:id="@+id/btnCl0SearchMother" android:layout_width="0dp" android:layout_height="34dp" android:layout_weight="1" android:text="○ Mother Name" android:textSize="9.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/etCl0SearchBox"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@android:drawable/editbox_background"
+            android:hint="Type to search..."
+            android:paddingHorizontal="12dp"
+            android:textSize="14sp"
+            android:inputType="text" />
+
+    </LinearLayout>
+
+    <!-- RECORD FOUND COUNT (DARK BLACK BACKGROUND #0F172A, NO MARGIN, HARLEQUIN GREEN #3FFF00 NUMBER) -->
+    <TextView
+        android:id="@+id/tvCl0Count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0F172A"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="6dp"
+        android:text="Record Found: 0"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <!-- RECYCLERVIEW -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCl0List"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="4dp" />
+
+</LinearLayout>

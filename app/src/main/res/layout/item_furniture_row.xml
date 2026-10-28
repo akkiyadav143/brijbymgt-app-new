@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="#CBD5E1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="6dp">
+
+            <TextView
+                android:id="@+id/tvFurnitureRowTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Furniture Entry #1"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#1565C0" />
+
+            <ImageButton
+                android:id="@+id/btnDeleteFurnitureRow"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_delete"
+                app:tint="#D32F2F"
+                android:contentDescription="Delete Furniture Row" />
+        </LinearLayout>
+
+        <!-- Row Fields: कुल छात्र संख्या, के सापेक्ष, आवश्यकता -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_marginBottom="6dp">
+
+            <EditText
+                android:id="@+id/etRowTotalStudents"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1.2"
+                android:hint="कुल छात्र संख्या"
+                android:inputType="number"
+                android:textSize="11sp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:paddingHorizontal="8dp"
+                android:layout_marginEnd="4dp" />
+
+            <EditText
+                android:id="@+id/etRowRatio"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="के सापेक्ष (e.g. 3)"
+                android:inputType="number"
+                android:textSize="11sp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:paddingHorizontal="8dp"
+                android:layout_marginEnd="4dp" />
+
+            <EditText
+                android:id="@+id/etRowFurnitureRequired"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="आवश्यकता"
+                android:inputType="number"
+                android:textSize="11sp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:paddingHorizontal="8dp" />
+        </LinearLayout>
+
+        <!-- Row Fields: Available Furniture, Total Enrolled -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_marginBottom="6dp">
+
+            <EditText
+                android:id="@+id/etRowAvailableFurniture"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="Available Furn."
+                android:inputType="number"
+                android:textSize="11sp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:paddingHorizontal="8dp"
+                android:layout_marginEnd="4dp" />
+
+            <EditText
+                android:id="@+id/etRowTotalEnrolled"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="Total Enrolled"
+                android:inputType="number"
+                android:textSize="11sp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:paddingHorizontal="8dp" />
+        </LinearLayout>
+
+        <!-- Remarks -->
+        <EditText
+            android:id="@+id/etRowRemarks"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Remarks / विशेष विवरण"
+            android:inputType="text"
+            android:textSize="11sp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:paddingHorizontal="8dp" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

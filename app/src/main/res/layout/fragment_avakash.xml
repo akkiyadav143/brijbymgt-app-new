@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAFC"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- HEADER BANNER -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="उत्तर प्रदेश बेसिक शिक्षा परिषद — अवकाश तालिका 2026\n(पत्रांक बे०शि०प०/19684-89/2025-26, दिनांक 31-12-2025)"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="#1E3A8A"
+            android:padding="12dp"
+            android:gravity="center"
+            android:layout_marginBottom="10dp" />
+
+        <!-- HOLIDAY TABLE CARD -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="2dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#CBD5E1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="वर्ष 2026 में दिए जाने वाले अवकाशों की तालिका"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="#0D47A1"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- TABLE HEADER -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="#1E3A8A"
+                    android:padding="6dp">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="क्र०सं०" android:textStyle="bold" android:textColor="#FFFFFF" android:textSize="11sp" android:gravity="center" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="अवकाश का नाम" android:textStyle="bold" android:textColor="#FFFFFF" android:textSize="11sp" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="दिन" android:textStyle="bold" android:textColor="#FFFFFF" android:textSize="11sp" android:gravity="center" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="तिथियां" android:textStyle="bold" android:textColor="#FFFFFF" android:textSize="11sp" android:gravity="center" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="दिन" android:textStyle="bold" android:textColor="#FFFFFF" android:textSize="11sp" android:gravity="center" />
+                </LinearLayout>
+
+                <!-- 1 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#FFFFFF">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="हजरत अली का जन्म दिवस" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="03 जनवरी 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="शनिवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 2 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#F8FAFC">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="2" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="मकर संकान्ति" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="14 जनवरी 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="बुद्धवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 3 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#FFFFFF">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="3" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="बसंत पंचमी" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="23 जनवरी 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="शुक्रवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 4 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#F8FAFC">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="4" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="गणतन्त्र दिवस" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="26 जनवरी 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="सोमवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 5 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#FFFFFF">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="5" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="संत रविदास जयन्ती" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="01 फरवरी 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="रविवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 6 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#F8FAFC">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="6" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="महाशिवरात्रि" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="15 फरवरी 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="रविवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 7 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#FFFFFF">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="7" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="होलिका दहन" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="02 मार्च 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="सोमवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 8 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#F8FAFC">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="8" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="होली" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="04 मार्च 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="बुद्धवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 9 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#FFFFFF">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="9" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="ईद-उल-फितर" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="21 मार्च 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="शनिवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 10 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#F8FAFC">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="10" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="रामनवमी" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="26 मार्च 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="गुरुवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 11 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#FFFFFF">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="11" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="महावीर जयन्ती" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="31 मार्च 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="मंगलवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 12 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#F8FAFC">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="12" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="गुड फ्राइडे" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="03 अप्रैल 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="शुक्रवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 13 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#FFFFFF">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="13" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="डा० भीमराव अम्बेडकर जन्म दिवस" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="14 अप्रैल 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="मंगलवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 14 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#F8FAFC">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="14" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="बुद्ध पूर्णिमा" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="1 मई 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="शुक्रवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 15 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#FFFFFF">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="15" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="ईदुज्जुहा (बकरीद)" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="27 मई 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="बुधवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 16 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#F8FAFC">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="16" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="मोहर्रम" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="26 जून 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="शुक्रवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 17 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#FFFFFF">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="17" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="चेहल्लुम" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="04 अगस्त 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="मंगलवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 18 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#F8FAFC">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="18" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="स्वतन्त्रता दिवस" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="15 अगस्त 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="शनिवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 19 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#FFFFFF">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="19" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="ईद-ए-मिलाद / बारावफात" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="26 अगस्त 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="बुधवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 20 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#F8FAFC">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="20" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="रक्षाबंधन" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="28 अगस्त 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="शुक्रवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 21 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#FFFFFF">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="21" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="जन्माष्टमी" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="04 सितम्बर 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="शुक्रवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 22 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#F8FAFC">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="22" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="विश्वकर्मा पूजा" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="17 सितम्बर 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="गुरुवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 23 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#FFFFFF">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="23" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="अनन्त चतुर्दशी" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="25 सितम्बर 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="शुक्रवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 24 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#F8FAFC">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="24" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="महात्मा गाँधी जन्मदिवस" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="02 अक्टूबर 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="शुक्रवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 25 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#FFFFFF">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="25" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="दशहरा (महा नवमी) / (विजय दशमी)" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="20 अक्टूबर 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="मंगलवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 26 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#F8FAFC">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="26" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="महर्षि वाल्मीकि जयन्ती" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="26 अक्टूबर 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="सोमवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 27 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#FFFFFF">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="27" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="सरदार वल्लभ भाई पटेल का जन्म दिवस एवं आचार्य नरेन्द्र देव जयन्ती" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="31 अक्टूबर 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="शनिवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 28 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#F8FAFC">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="28" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="नरक चतुर्दशी / दीपावली" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="08 नवम्बर 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="रविवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 29 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#FFFFFF">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="29" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="गोवर्द्धन पूजा" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="09 नवम्बर 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="सोमवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 30 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#F8FAFC">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="30" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="भैया दूज / चित्रगुप्त जयन्ती" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="11 नवम्बर 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="बुधवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 31 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#FFFFFF">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="31" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="छठ पूजा पर्व" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="15 नवम्बर 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="रविवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 32 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#F8FAFC">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="32" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="गुरुनानक जयन्ती / कार्तिक पूर्णिमा / गुरु तेगबहादुर शहीद दिवस" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="24 नवम्बर 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="मंगलवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#E2E8F0" />
+
+                <!-- 33 -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="6dp" android:background="#FFFFFF">
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="33" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.5" android:text="क्रिसमस डे" android:textSize="11sp" android:textColor="#0F172A" android:paddingStart="4dp" />
+                    <TextView android:layout_width="35dp" android:layout_height="wrap_content" android:text="1" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1.2" android:text="25 दिसम्बर 2026" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                    <TextView android:layout_width="65dp" android:layout_height="wrap_content" android:text="शुक्रवार" android:textSize="11sp" android:gravity="center" android:textColor="#0F172A" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- IMPORTANT INSTRUCTIONS CARD -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardBackgroundColor="#FEF9C3"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="2dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#EAB308">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="महत्वपूर्ण निर्देश एवं शैक्षणिक समय (Important Instructions):"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="#854D0E"
+                    android:layout_marginBottom="6dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1. उ०प्र० बेसिक शिक्षा परिषद द्वारा संचालित परिषदीय एवं मान्यता प्राप्त विद्यालयों में तालिका में अंकित अवकाश देय होंगे।\n\n2. प्राथमिक एवं उच्च प्राथमिक विद्यालय हेतु कक्षा 1 से 5 तथा कक्षा 6 से 8 में पढ़ाई के घंटे निम्नवत् निर्धारित हैं:-\n   • 01 अप्रैल से 30 सितम्बर तक प्रातः 08 बजे से अपराह्न 02 बजे तक (प्रार्थना सभा 08:00 से 08:15 तक)।\n   • 01 अक्टूबर से 31 मार्च तक प्रातः 09 बजे से अपराह्न 03 बजे तक (प्रार्थना सभा 09:00 से 09:15 तक)।\n   • ग्रीष्मकाल में मध्यावकाश अपराह्न 10:30 बजे से 11:00 बजे तक एवं शीतकाल में मध्यावकाश अपराह्न 12:00 बजे से 12:30 बजे तक होगा।\n\n3. जिलाधिकारी द्वारा अनुमन्य अवकाश देय होंगे।\n\n4. मुस्लिम त्यौहार चन्द्र दर्शन के अनुसार मनाये जायेंगे।\n\n5. हर तालिका तीज, अथवा हरियाली तीज, करवा चौथ, संकटा चतुर्थी एवं हलछठ / ललई छठ, जिउतिया व्रत / अहोई अष्टमी का अवकाश शिक्षकों एवं पितृ-विसर्जन का अवकाश शिक्षक / शिक्षिकाओं को देय होगा।"
+                    android:textSize="11.5sp"
+                    android:textColor="#713F12" />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</ScrollView>

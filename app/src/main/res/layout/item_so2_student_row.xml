@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="#CBD5E1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="6dp">
+
+            <TextView
+                android:id="@+id/tvSo2RowTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Student #1"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#1565C0" />
+
+            <ImageButton
+                android:id="@+id/btnDeleteSo2Row"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_delete"
+                app:tint="#D32F2F"
+                android:contentDescription="Delete Student Entry" />
+        </LinearLayout>
+
+        <!-- Student Particulars -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_marginBottom="6dp">
+
+            <EditText
+                android:id="@+id/etSo2StudentName"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="2"
+                android:hint="Student Name"
+                android:inputType="textPersonName"
+                android:textSize="11sp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:paddingHorizontal="8dp"
+                android:layout_marginEnd="4dp" />
+
+            <EditText
+                android:id="@+id/etSo2Class"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="Class (2-12)"
+                android:inputType="text"
+                android:textSize="11sp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:paddingHorizontal="8dp"
+                android:layout_marginEnd="4dp" />
+
+            <EditText
+                android:id="@+id/etSo2Gender"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="Gender (M/F)"
+                android:inputType="text"
+                android:textSize="11sp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:paddingHorizontal="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_marginBottom="6dp">
+
+            <EditText
+                android:id="@+id/etSo2Dob"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="DOB (DD-MM-YYYY)"
+                android:inputType="text"
+                android:textSize="11sp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:paddingHorizontal="8dp"
+                android:layout_marginEnd="4dp" />
+
+            <EditText
+                android:id="@+id/etSo2Pen"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="PEN / UDISE ID"
+                android:inputType="text"
+                android:textSize="11sp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:paddingHorizontal="8dp" />
+        </LinearLayout>
+
+        <!-- Parent Details -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_marginBottom="6dp">
+
+            <EditText
+                android:id="@+id/etSo2FatherName"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="Father Name"
+                android:inputType="textPersonName"
+                android:textSize="11sp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:paddingHorizontal="8dp"
+                android:layout_marginEnd="4dp" />
+
+            <EditText
+                android:id="@+id/etSo2MotherName"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="Mother Name"
+                android:inputType="textPersonName"
+                android:textSize="11sp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:paddingHorizontal="8dp" />
+        </LinearLayout>
+
+        <!-- Other Details: Student Aadhar No & Name As per Aadhar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_marginBottom="6dp">
+
+            <EditText
+                android:id="@+id/etSo2AadharNo"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="Student Aadhar No"
+                android:inputType="number"
+                android:textSize="11sp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:paddingHorizontal="8dp"
+                android:layout_marginEnd="4dp" />
+
+            <EditText
+                android:id="@+id/etSo2NameAsAadhar"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="Name As per Aadhar"
+                android:inputType="textPersonName"
+                android:textSize="11sp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:paddingHorizontal="8dp" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/etSo2ReasonNotAdded"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Reason why Student was NOT Added in Previous Academic Year"
+            android:inputType="text"
+            android:textSize="11sp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:paddingHorizontal="8dp" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

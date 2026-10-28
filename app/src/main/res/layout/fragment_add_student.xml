@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvFormTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STUDENT REGISTRATION FORM"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#1565C0"
+            android:layout_marginBottom="16dp" />
+
+        <!-- PHOTO PICKERS (STUDENT | FATHER | MOTHER) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_marginBottom="16dp">
+
+            <!-- STUDENT PHOTO -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginEnd="4dp">
+
+                <ImageView
+                    android:id="@+id/ivStudentImage"
+                    android:layout_width="70dp"
+                    android:layout_height="80dp"
+                    android:background="#E0E0E0"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Student Photo" />
+
+                <Button
+                    android:id="@+id/btnSelectPhoto"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:paddingHorizontal="4dp"
+                    android:textSize="10sp"
+                    android:text="Student Photo"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+
+            <!-- FATHER PHOTO -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginEnd="4dp">
+
+                <ImageView
+                    android:id="@+id/ivFatherImage"
+                    android:layout_width="70dp"
+                    android:layout_height="80dp"
+                    android:background="#E0E0E0"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Father Photo" />
+
+                <Button
+                    android:id="@+id/btnSelectFatherPhoto"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:paddingHorizontal="4dp"
+                    android:textSize="10sp"
+                    android:text="Father Photo"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+
+            <!-- MOTHER PHOTO -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/ivMotherImage"
+                    android:layout_width="70dp"
+                    android:layout_height="80dp"
+                    android:background="#E0E0E0"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Mother Photo" />
+
+                <Button
+                    android:id="@+id/btnSelectMotherPhoto"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:paddingHorizontal="4dp"
+                    android:textSize="10sp"
+                    android:text="Mother Photo"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 1. Sr No & 2. SR Number SIDE BY SIDE -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_marginBottom="10dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilSrNo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="1. Sr No"
+                android:layout_marginEnd="6dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSrNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilSrNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="2. SR Number">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSrNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <!-- 3. Unique ID & 4. PEN No SIDE BY SIDE (NUMERIC ONLY) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_marginBottom="10dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilUniqueId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="3. Unique ID"
+                android:layout_marginEnd="6dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUniqueId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPenNo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="4. PEN No">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPenNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <!-- 5. AAPAR ID (NUMERIC ONLY) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilAaparId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="5. AAPAR ID"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etAaparId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 7. CLASS & 6. DBT SIDE BY SIDE (CLASS FIRST, THEN DBT) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="10dp">
+
+            <!-- 7. CLASS (LEFT SIDE) -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7. Class *"
+                    android:textStyle="bold"
+                    android:textColor="#333333" />
+
+                <Spinner
+                    android:id="@+id/spinnerClass"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+
+            <!-- 6. DBT (RIGHT SIDE) -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6. DBT *"
+                    android:textStyle="bold"
+                    android:textColor="#333333" />
+
+                <RadioGroup
+                    android:id="@+id/rgDbt"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="2dp">
+
+                    <RadioButton
+                        android:id="@+id/rbDbtYes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yes"
+                        android:layout_marginEnd="8dp" />
+
+                    <RadioButton
+                        android:id="@+id/rbDbtNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No"
+                        android:checked="true" />
+                </RadioGroup>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 8. Student Name -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilStudentName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="8. Student Name *"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etStudentName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 9. Date of Birth & 10. Admission Date SIDE BY SIDE -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:layout_marginBottom="10dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDob"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="9. Date of Birth"
+                android:layout_marginEnd="6dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:clickable="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilAdmissionDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="10. Admission Date">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAdmissionDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:clickable="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <!-- 11. Student Adhar -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilStudentAdhar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="11. Student Adhar"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etStudentAdhar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="12" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 12. C/o -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilCo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="12. C/o"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 13. Gender (NO DEFAULT SELECTION) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="13. Gender *"
+            android:textStyle="bold"
+            android:textColor="#333333" />
+        <RadioGroup
+            android:id="@+id/rgGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+            <RadioButton android:id="@+id/rbMale" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Male" />
+            <RadioButton android:id="@+id/rbFemale" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Female" />
+        </RadioGroup>
+
+        <!-- 14. Caste (NO DEFAULT SELECTION) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="14. Caste"
+            android:textStyle="bold"
+            android:textColor="#333333" />
+        <RadioGroup
+            android:id="@+id/rgCaste"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+            <RadioButton android:id="@+id/rbGen" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="GEN" />
+            <RadioButton android:id="@+id/rbObc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="OBC" />
+            <RadioButton android:id="@+id/rbSc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SC" />
+            <RadioButton android:id="@+id/rbSt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ST" />
+            <RadioButton android:id="@+id/rbMinority" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MINORITY" />
+        </RadioGroup>
+
+        <!-- 15. Father Name -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilFatherName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="15. Father Name"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFatherName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 16. Father Adhar -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilFatherAdhar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="16. Father Adhar"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFatherAdhar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="12" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 17. Mother Name -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilMotherName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="17. Mother Name"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etMotherName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 18. Mother Adhar -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilMotherAdhar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="18. Mother Adhar"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etMotherAdhar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="12" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 19. Mobile No -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilMobileNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="19. Mobile No"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etMobileNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:maxLength="10" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 20. Address -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="20. Address"
+            android:layout_marginBottom="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:minLines="2" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 21. Other -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilOther"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="21. Other (Optional)"
+            android:layout_marginBottom="16dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etOther"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:minLines="2" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Rashan Card -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilRationCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Rashan Card Number"
+            android:layout_marginBottom="16dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etRationCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- HEALTH DETAILS SECTION -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HEALTH DETAILS"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#2E7D32"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- HEALTH CONTAINER (ALWAYS VISIBLE) -->
+        <LinearLayout
+            android:id="@+id/llHealthContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <!-- HEIGHT & WEIGHT SIDE BY SIDE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="false"
+                android:layout_marginBottom="6dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Height (cm)"
+                    android:layout_marginEnd="6dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etHeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Weight (kg)">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etWeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <!-- BLOOD GROUP & HB SIDE BY SIDE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="false"
+                android:layout_marginBottom="6dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Blood Group"
+                    android:layout_marginEnd="6dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etBloodGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Hb">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etHb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <!-- EYE SIGHT & DEWORMING SIDE BY SIDE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="false"
+                android:layout_marginBottom="6dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Eye Sight"
+                    android:layout_marginEnd="6dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEyeSight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Deworming">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDeworming"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <!-- HEIGHT & WEIGHT HISTORY SECTION -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ADD MORE HEIGHT AND WEIGHT"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="6dp" />
+
+            <LinearLayout
+                android:id="@+id/llHwHistoryContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvHwHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/btnAddMoreHwRow"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+ ADD MORE"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- BANK DETAILS SECTION -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BANK DETAILS"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#4E342E"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- BANK CONTAINER (ALWAYS VISIBLE) -->
+        <LinearLayout
+            android:id="@+id/llBankContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilAcHolderName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="A/c Holder Name"
+                android:layout_marginBottom="6dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAcHolderName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilAcNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="A/c No"
+                android:layout_marginBottom="6dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAcNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- IFSC CODE & BRANCH NAME SIDE BY SIDE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilIfscCode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="IFSC Code"
+                    android:layout_marginEnd="6dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etIfscCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilBranchName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Branch Name">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etBranchName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- STUDENT DOCUMENTS SECTION -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STUDENT DOCUMENTS"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#0277BD"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:id="@+id/llDocumentsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp" />
+
+        <!-- FORM ACTION BUTTONS -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp">
+
+            <Button
+                android:id="@+id/btnFormPreview"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="PREVIEW"
+                android:textSize="16sp"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnFormSubmit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="SUBMIT"
+                android:textSize="16sp"
+                app:backgroundTint="#1565C0" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

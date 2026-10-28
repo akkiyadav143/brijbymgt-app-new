@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="#CBD5E1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvResultRank"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="#1"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="#1565C0"
+            android:gravity="center"
+            android:layout_marginEnd="10dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvResultStudentName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Student Name"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#1E293B"
+                android:layout_marginBottom="1dp" />
+
+            <TextView
+                android:id="@+id/tvResultDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SR: 101 | Father: Sh. Ramesh"
+                android:textSize="10.5sp"
+                android:textColor="#64748B"
+                android:layout_marginBottom="2dp" />
+
+            <TextView
+                android:id="@+id/tvResultMarks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Marks: 450 / 600 (75.0%)"
+                android:textSize="11.5sp"
+                android:textStyle="bold"
+                android:textColor="#0F172A"
+                android:layout_marginBottom="2dp" />
+
+            <TextView
+                android:id="@+id/tvResultStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PASS | Grade: A"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="#16A34A" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnViewReportCard"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="📄 Report"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="#7B1FA2"
+            android:paddingHorizontal="8dp" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

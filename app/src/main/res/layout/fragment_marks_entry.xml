@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E3A8A"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EXACT MARKS ENTRY WORKFLOW"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:layout_marginBottom="8dp" />
+
+    <!-- PROGRESSIVE SELECTION CARD -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <!-- Step 1: Class Dropdown -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Step 1: Select Class (Class 1 to Class 8)"
+                android:textSize="11.5sp"
+                android:textStyle="bold"
+                android:textColor="#1E293B" />
+            <Spinner
+                android:id="@+id/spinnerSelectClass"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@android:drawable/btn_dropdown"
+                android:layout_marginBottom="6dp" />
+
+            <!-- Step 2: Examination Dropdown -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Step 2: Select Examination"
+                android:textSize="11.5sp"
+                android:textStyle="bold"
+                android:textColor="#1E293B" />
+            <Spinner
+                android:id="@+id/spinnerSelectExam"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:enabled="false"
+                android:background="@android:drawable/btn_dropdown"
+                android:layout_marginBottom="6dp" />
+
+            <!-- Step 3: Subject Dropdown -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Step 3: Select Subject"
+                android:textSize="11.5sp"
+                android:textStyle="bold"
+                android:textColor="#1E293B" />
+            <Spinner
+                android:id="@+id/spinnerSelectSubject"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:enabled="false"
+                android:background="@android:drawable/btn_dropdown"
+                android:layout_marginBottom="6dp" />
+
+            <!-- Subject Max & Passing Info Banner -->
+            <TextView
+                android:id="@+id/tvSubjectMarksInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Maximum Marks: - | Passing Marks: -"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#0D47A1"
+                android:background="#EFF6FF"
+                android:padding="6dp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Step 4: Complete Student List RecyclerView -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Step 4: Complete Student List &amp; Marks Entry"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="4dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMarksEntry"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnSaveMarks"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="💾 Save Marks"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="#2E7D32"
+            android:layout_marginEnd="6dp" />
+
+        <Button
+            android:id="@+id/btnSaveAllMarks"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="💾 Save All &amp; Validate"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="#1565C0" />
+
+    </LinearLayout>
+
+</LinearLayout>

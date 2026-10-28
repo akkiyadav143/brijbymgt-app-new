@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="6dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="#CBD5E1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvSubjectStudentName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Student Name"
+                android:textSize="13.5sp"
+                android:textStyle="bold"
+                android:textColor="#1E293B" />
+
+            <TextView
+                android:id="@+id/tvSubjectStudentDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SR: 101 | Father: Sh. Ramesh"
+                android:textSize="10.5sp"
+                android:textColor="#64748B" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvSubjectStudentScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="85 / 100 | PASS"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#16A34A" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

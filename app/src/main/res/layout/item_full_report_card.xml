@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="3dp"
+    app:strokeWidth="1.5dp"
+    app:strokeColor="#94A3B8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- HEADER: SCHOOL / EXAM TITLE -->
+        <TextView
+            android:id="@+id/tvReportExamHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CONSOLIDATED ANNUAL EXAMINATION MARKSHET"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="#1E3A8A"
+            android:gravity="center"
+            android:layout_marginBottom="6dp" />
+
+        <!-- STUDENT INFO BOX -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#F8FAFC"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/tvReportStudentName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Student Name: John Doe"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#0F172A" />
+
+            <TextView
+                android:id="@+id/tvReportStudentDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SR Number: 101 | Class: Class 5 | Father: Mr. Doe"
+                android:textSize="11sp"
+                android:textColor="#475569" />
+
+        </LinearLayout>
+
+        <!-- SUBJECT TABLE CONTAINER -->
+        <LinearLayout
+            android:id="@+id/layoutSubjectTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="8dp">
+
+            <!-- Table Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#E2E8F0"
+                android:padding="4dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.0"
+                    android:text="Subject"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:textColor="#1E293B" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:text="Unit I"
+                    android:textSize="10.5sp"
+                    android:textStyle="bold"
+                    android:textColor="#1E293B"
+                    android:gravity="center" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.1"
+                    android:text="Half Yearly"
+                    android:textSize="10.5sp"
+                    android:textStyle="bold"
+                    android:textColor="#1E293B"
+                    android:gravity="center" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:text="Unit II"
+                    android:textSize="10.5sp"
+                    android:textStyle="bold"
+                    android:textColor="#1E293B"
+                    android:gravity="center" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:text="Yearly"
+                    android:textSize="10.5sp"
+                    android:textStyle="bold"
+                    android:textColor="#1E293B"
+                    android:gravity="center" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.4"
+                    android:text="Subject Total"
+                    android:textSize="10.5sp"
+                    android:textStyle="bold"
+                    android:textColor="#1E293B"
+                    android:gravity="center" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- SUMMARY FOOTER -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#EFF6FF"
+            android:padding="8dp"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvReportTotalMarks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Overall Total: 413 / 500 (82.6%)"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="#1E3A8A" />
+                <TextView
+                    android:id="@+id/tvReportGrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grade: A | Rank: #1"
+                    android:textSize="11sp"
+                    android:textColor="#475569" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvReportPassStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PASS"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:background="#16A34A"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

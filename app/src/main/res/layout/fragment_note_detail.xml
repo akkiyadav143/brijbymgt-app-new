@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAFC"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvPinStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="📌 Pinned / पिन किया गया"
+        android:textColor="#D97706"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvDetailTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Note Title"
+        android:textColor="#1E293B"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="6dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/tvCreatedDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Created: 01/01/2025"
+            android:textColor="#64748B"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvUpdatedDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Updated: 01/01/2025"
+            android:textColor="#64748B"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#CBD5E1"
+        android:layout_marginBottom="16dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/tvDetailContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Full note content..."
+            android:textColor="#334155"
+            android:textSize="16sp"
+            android:lineSpacingExtra="4dp" />
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnTogglePinDetail"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Pin / पिन करें"
+            android:textSize="13sp"
+            android:layout_marginEnd="4dp" />
+
+        <Button
+            android:id="@+id/btnEditNote"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Edit / संपादित"
+            android:textSize="13sp"
+            app:backgroundTint="#2563EB"
+            android:layout_marginEnd="4dp" />
+
+        <Button
+            android:id="@+id/btnDeleteNoteDetail"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Delete / हटाएं"
+            android:textSize="13sp"
+            app:backgroundTint="#DC2626" />
+
+    </LinearLayout>
+
+</LinearLayout>

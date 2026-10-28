@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootCasteScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:id="@+id/rootCasteLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- HEADER TITLE BANNER -->
+        <TextView
+            android:id="@+id/tvCasteTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="संविलियन विद्यालय जातिवार सूची"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#1E3A8A"
+            android:background="#FFFFFF"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="10dp"
+            android:gravity="center"
+            android:layout_marginBottom="10dp" />
+
+        <!-- SCHOOL NAME INPUT FIELD -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCasteSchoolName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="School Name (विद्यालय का नाम)"
+                android:textSize="13sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- ACTION BUTTONS TOP BAR: SHARE PDF & PRINT PDF -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <Button
+                android:id="@+id/btnShareCastePdf"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="SHARE PDF"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:backgroundTint="#1E3A8A"
+                android:layout_marginEnd="6dp" />
+
+            <Button
+                android:id="@+id/btnPrintCastePdf"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="PRINT PDF"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:backgroundTint="#2E7D32" />
+
+        </LinearLayout>
+
+        <!-- HORIZONTAL SCROLLABLE MATRIX TABLE -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="horizontal|vertical"
+            android:overScrollMode="never"
+            android:layout_marginBottom="16dp">
+
+            <TableLayout
+                android:id="@+id/tableCasteReport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:padding="1dp">
+
+                <!-- TABLE HEADER ROW 1 (CATEGORY NAMES) -->
+                <TableRow android:background="#ECEFF1" android:padding="4dp">
+                    <TextView android:text="कक्षा\n(Class)" android:textStyle="bold" android:textSize="11sp" android:gravity="center" android:padding="6dp" android:textColor="#0F172A" />
+
+                    <!-- SC Header (3 Cols) -->
+                    <TextView android:text="अनुसूचित जाति (SC)" android:textStyle="bold" android:textSize="11sp" android:gravity="center" android:padding="6dp" android:textColor="#0D47A1" android:layout_span="3" />
+
+                    <!-- ST Header (3 Cols) -->
+                    <TextView android:text="अनुसूचित जनजाति (ST)" android:textStyle="bold" android:textSize="11sp" android:gravity="center" android:padding="6dp" android:textColor="#4A148C" android:layout_span="3" />
+
+                    <!-- OBC Header (3 Cols) -->
+                    <TextView android:text="पिछड़ी जाति (OBC)" android:textStyle="bold" android:textSize="11sp" android:gravity="center" android:padding="6dp" android:textColor="#1B5E20" android:layout_span="3" />
+
+                    <!-- MINORITY Header (3 Cols) -->
+                    <TextView android:text="अल्पसंख्यक (MINORITY)" android:textStyle="bold" android:textSize="11sp" android:gravity="center" android:padding="6dp" android:textColor="#E65100" android:layout_span="3" />
+
+                    <!-- GEN Header (3 Cols) -->
+                    <TextView android:text="सामान्य जाति (GEN)" android:textStyle="bold" android:textSize="11sp" android:gravity="center" android:padding="6dp" android:textColor="#B71C1C" android:layout_span="3" />
+
+                    <!-- TOTAL Header (3 Cols) -->
+                    <TextView android:text="कुल छात्र संख्या (TOTAL)" android:textStyle="bold" android:textSize="11sp" android:gravity="center" android:padding="6dp" android:textColor="#0F172A" android:layout_span="3" />
+                </TableRow>
+
+                <!-- TABLE HEADER ROW 2 (SUB-COLUMNS: बालक, बालिका, योग) -->
+                <TableRow android:background="#F1F5F9" android:padding="4dp">
+                    <TextView android:text="" android:padding="4dp" />
+
+                    <!-- SC Subcols -->
+                    <TextView android:text="बालक" android:textSize="10.5sp" android:textStyle="bold" android:gravity="center" android:padding="4dp" android:textColor="#014EB1" />
+                    <TextView android:text="बालिका" android:textSize="10.5sp" android:textStyle="bold" android:gravity="center" android:padding="4dp" android:textColor="#D92200" />
+                    <TextView android:text="योग" android:textSize="10.5sp" android:textStyle="bold" android:gravity="center" android:padding="4dp" android:textColor="#D32F2F" />
+
+                    <!-- ST Subcols -->
+                    <TextView android:text="बालक" android:textSize="10.5sp" android:textStyle="bold" android:gravity="center" android:padding="4dp" android:textColor="#014EB1" />
+                    <TextView android:text="बालिका" android:textSize="10.5sp" android:textStyle="bold" android:gravity="center" android:padding="4dp" android:textColor="#D92200" />
+                    <TextView android:text="योग" android:textSize="10.5sp" android:textStyle="bold" android:gravity="center" android:padding="4dp" android:textColor="#D32F2F" />
+
+                    <!-- OBC Subcols -->
+                    <TextView android:text="बालक" android:textSize="10.5sp" android:textStyle="bold" android:gravity="center" android:padding="4dp" android:textColor="#014EB1" />
+                    <TextView android:text="बालिका" android:textSize="10.5sp" android:textStyle="bold" android:gravity="center" android:padding="4dp" android:textColor="#D92200" />
+                    <TextView android:text="योग" android:textSize="10.5sp" android:textStyle="bold" android:gravity="center" android:padding="4dp" android:textColor="#D32F2F" />
+
+                    <!-- MINORITY Subcols -->
+                    <TextView android:text="बालक" android:textSize="10.5sp" android:textStyle="bold" android:gravity="center" android:padding="4dp" android:textColor="#014EB1" />
+                    <TextView android:text="बालिका" android:textSize="10.5sp" android:textStyle="bold" android:gravity="center" android:padding="4dp" android:textColor="#D92200" />
+                    <TextView android:text="योग" android:textSize="10.5sp" android:textStyle="bold" android:gravity="center" android:padding="4dp" android:textColor="#D32F2F" />
+
+                    <!-- GEN Subcols -->
+                    <TextView android:text="बालक" android:textSize="10.5sp" android:textStyle="bold" android:gravity="center" android:padding="4dp" android:textColor="#014EB1" />
+                    <TextView android:text="बालिका" android:textSize="10.5sp" android:textStyle="bold" android:gravity="center" android:padding="4dp" android:textColor="#D92200" />
+                    <TextView android:text="योग" android:textSize="10.5sp" android:textStyle="bold" android:gravity="center" android:padding="4dp" android:textColor="#D32F2F" />
+
+                    <!-- TOTAL Subcols -->
+                    <TextView android:text="बालक" android:textSize="10.5sp" android:textStyle="bold" android:gravity="center" android:padding="4dp" android:textColor="#014EB1" />
+                    <TextView android:text="बालिका" android:textSize="10.5sp" android:textStyle="bold" android:gravity="center" android:padding="4dp" android:textColor="#D92200" />
+                    <TextView android:text="योग" android:textSize="10.5sp" android:textStyle="bold" android:gravity="center" android:padding="4dp" android:textColor="#D32F2F" />
+                </TableRow>
+
+                <!-- ROWS 1 TO 8, SUMMARIES 1-5, 6-8 AND GRAND TOTAL WILL BE GENERATED IN FRAGMENT -->
+            </TableLayout>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+</ScrollView>

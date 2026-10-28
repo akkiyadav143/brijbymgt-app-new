@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E3A8A"
+    android:paddingHorizontal="10dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- HEADER TITLE & DATE (DATE DAY MONTH ORDER) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="SCHOOL DASHBOARD"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/tvDashboardDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="25 Thursday September 2026"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="#F1F5F9" />
+
+        </LinearLayout>
+
+        <!-- SINGLE ROW: SHOWING STATISTICS FOR (LEFT IN LEMON #FFF700) & CATEGORY & GENDER STATISTICS (RIGHT) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <!-- SHOWING STATISTICS FOR BANNER (LIGHT BROWN BACKGROUND, LEMON YELLOW TEXT #FFF700) -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                app:cardBackgroundColor="#6D4C41"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#5D4037">
+
+                <TextView
+                    android:id="@+id/tvActiveFilterLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="6dp"
+                    android:paddingHorizontal="8dp"
+                    android:gravity="center_vertical"
+                    android:text="Showing Statistics for: ALL CL"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFF700" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- CATEGORY & GENDER STATISTICS (RIGHT SIDE) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CATEGORY &amp; GENDER STATISTICS"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="#F1F5F9" />
+
+        </LinearLayout>
+
+        <!-- 1. CATEGORY & GENDER STATISTICS (STABLE 2 ROWS) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="12dp">
+
+            <!-- ROW 1: TOTAL | GEN | OBC -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="false"
+                android:layout_marginBottom="6dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp">
+                    <include layout="@layout/item_category_gender_card" android:id="@+id/cardTotal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp">
+                    <include layout="@layout/item_category_gender_card" android:id="@+id/cardGen" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <include layout="@layout/item_category_gender_card" android:id="@+id/cardObc" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ROW 2: SC | ST | MINORITY -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp">
+                    <include layout="@layout/item_category_gender_card" android:id="@+id/cardSc" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp">
+                    <include layout="@layout/item_category_gender_card" android:id="@+id/cardSt" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <include layout="@layout/item_category_gender_card" android:id="@+id/cardMinority" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 2. AADHAR / APAAR / DBT SECTION (SMALL CARDS) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SCHEMES &amp; IDENTIFICATION"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:textColor="#F1F5F9"
+            android:layout_marginBottom="4dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <!-- AADHAR CARD (SMALL) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAadhar"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                app:cardBackgroundColor="#F0F9FF"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#BAE6FD">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AADHAR"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:textColor="#0D47A1" />
+
+                    <TextView
+                        android:id="@+id/tvAadharCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#0F172A" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- APAAR CARD (SMALL) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAapar"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                app:cardBackgroundColor="#FAF5FF"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#E9D5FF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="APAAR"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:textColor="#7B1FA2" />
+
+                    <TextView
+                        android:id="@+id/tvAaparCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#0F172A" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- DBT CARD (SMALL) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDbt"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="#F0FDF4"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#BBF7D0">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DBT"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:textColor="#2E7D32" />
+
+                    <TextView
+                        android:id="@+id/tvDbtCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#0F172A" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <!-- 3. CLASS-WISE STUDENT COUNTS BANNER (LIGHT YELLOW BACKGROUND, DARK BLACK PILLS) -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="#FEF08A"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="3dp"
+            app:strokeWidth="1.5dp"
+            app:strokeColor="#EAB308">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CLASS-WISE STUDENT COUNTS"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="#854D0E"
+                    android:layout_marginBottom="6dp" />
+
+                <!-- ROW 1: TOTAL, ALL CL, CL 1, CL 2, CL 3, CL 4 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="6dp">
+
+                    <TextView android:id="@+id/tvCountTotal" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:background="#0F172A" android:textColor="#FFFFFF" android:textSize="9.5sp" android:textStyle="bold" android:gravity="center" android:text="TOTAL: 0" android:layout_marginEnd="2dp" />
+                    <TextView android:id="@+id/tvCountAllCl" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:background="#0F172A" android:textColor="#FFFFFF" android:textSize="9.5sp" android:textStyle="bold" android:gravity="center" android:text="ALL: 0" android:layout_marginEnd="2dp" />
+                    <TextView android:id="@+id/tvCountCl1" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:background="#0F172A" android:textColor="#FFFFFF" android:textSize="9.5sp" android:textStyle="bold" android:gravity="center" android:text="Class 1: 0" android:layout_marginEnd="2dp" />
+                    <TextView android:id="@+id/tvCountCl2" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:background="#0F172A" android:textColor="#FFFFFF" android:textSize="9.5sp" android:textStyle="bold" android:gravity="center" android:text="Class 2: 0" android:layout_marginEnd="2dp" />
+                    <TextView android:id="@+id/tvCountCl3" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:background="#0F172A" android:textColor="#FFFFFF" android:textSize="9.5sp" android:textStyle="bold" android:gravity="center" android:text="Class 3: 0" android:layout_marginEnd="2dp" />
+                    <TextView android:id="@+id/tvCountCl4" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:background="#0F172A" android:textColor="#FFFFFF" android:textSize="9.5sp" android:textStyle="bold" android:gravity="center" android:text="Class 4: 0" />
+
+                </LinearLayout>
+
+                <!-- ROW 2: CL 5, CL 6, CL 7, CL 8, CL 0, CL Pass -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView android:id="@+id/tvCountCl5" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:background="#0F172A" android:textColor="#FFFFFF" android:textSize="9.5sp" android:textStyle="bold" android:gravity="center" android:text="Class 5: 0" android:layout_marginEnd="2dp" />
+                    <TextView android:id="@+id/tvCountCl6" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:background="#0F172A" android:textColor="#FFFFFF" android:textSize="9.5sp" android:textStyle="bold" android:gravity="center" android:text="Class 6: 0" android:layout_marginEnd="2dp" />
+                    <TextView android:id="@+id/tvCountCl7" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:background="#0F172A" android:textColor="#FFFFFF" android:textSize="9.5sp" android:textStyle="bold" android:gravity="center" android:text="Class 7: 0" android:layout_marginEnd="2dp" />
+                    <TextView android:id="@+id/tvCountCl8" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:background="#0F172A" android:textColor="#FFFFFF" android:textSize="9.5sp" android:textStyle="bold" android:gravity="center" android:text="Class 8: 0" android:layout_marginEnd="2dp" />
+                    <TextView android:id="@+id/tvCountCl0" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:background="#0F172A" android:textColor="#FFFFFF" android:textSize="9.5sp" android:textStyle="bold" android:gravity="center" android:text="Class 0: 0" android:layout_marginEnd="2dp" />
+                    <TextView android:id="@+id/tvCountClPass" android:layout_width="0dp" android:layout_height="32dp" android:layout_weight="1" android:background="#0F172A" android:textColor="#FFFFFF" android:textSize="9.5sp" android:textStyle="bold" android:gravity="center" android:text="Pass: 0" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 4. CLASS FILTER BANNER (WHITE CARD BANNER) -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="3dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#CBD5E1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CLASS FILTER"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="#1E293B"
+                    android:layout_marginBottom="6dp" />
+
+                <!-- ROW 1: ALL, CL 1, CL 2, CL 3, CL 4 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="6dp">
+
+                    <Button android:id="@+id/btnAllCl" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="◉ ALL" android:textSize="11.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+                    <Button android:id="@+id/btnCl1" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="○ CL 1" android:textSize="11.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+                    <Button android:id="@+id/btnCl2" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="○ CL 2" android:textSize="11.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+                    <Button android:id="@+id/btnCl3" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="○ CL 3" android:textSize="11.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+                    <Button android:id="@+id/btnCl4" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="○ CL 4" android:textSize="11.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" />
+
+                </LinearLayout>
+
+                <!-- ROW 2: CL 5, CL 6, CL 7, CL 8 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button android:id="@+id/btnCl5" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="○ CL 5" android:textSize="11.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+                    <Button android:id="@+id/btnCl6" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="○ CL 6" android:textSize="11.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+                    <Button android:id="@+id/btnCl7" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="○ CL 7" android:textSize="11.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" android:layout_marginEnd="2dp" />
+                    <Button android:id="@+id/btnCl8" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="○ CL 8" android:textSize="11.5sp" android:textStyle="bold" android:paddingHorizontal="0dp" android:minWidth="0dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 5. REPORTS & MANAGEMENT -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="3dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#CBD5E1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="REPORTS &amp; MANAGEMENT"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="#1E293B"
+                    android:layout_marginBottom="6dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- ROW 1 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="4dp">
+
+                        <Button
+                            android:id="@+id/btnMdmReport"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:text="MDM"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            app:backgroundTint="#355E3B"
+                            android:layout_marginEnd="4dp" />
+
+                        <Button
+                            android:id="@+id/btnCasteReport"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:text="Caste"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            app:backgroundTint="#355E3B"
+                            android:layout_marginEnd="4dp" />
+
+                        <Button
+                            android:id="@+id/btnTrash"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:text="Trash"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            app:backgroundTint="#355E3B" />
+
+                    </LinearLayout>
+
+                    <!-- ROW 2 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="4dp">
+
+                        <Button
+                            android:id="@+id/btnSelectedExport"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1.3"
+                            android:text="Selected Export"
+                            android:textSize="8.5sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:paddingHorizontal="2dp"
+                            app:backgroundTint="#355E3B"
+                            android:layout_marginEnd="4dp" />
+
+                        <Button
+                            android:id="@+id/btnTcPrint"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="0.9"
+                            android:text="@string/tc_print_title"
+                            android:textSize="9.5sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:paddingHorizontal="2dp"
+                            app:backgroundTint="#355E3B"
+                            android:layout_marginEnd="4dp" />
+
+                        <Button
+                            android:id="@+id/btnExamDashboard"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="0.8"
+                            android:text="परीक्षा"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:paddingHorizontal="2dp"
+                            app:backgroundTint="#355E3B" />
+
+                    </LinearLayout>
+
+                    <!-- ROW 3 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnExportImportTab"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:text="Export/Import"
+                            android:textSize="8.5sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            app:backgroundTint="#355E3B"
+                            android:layout_marginEnd="4dp" />
+
+                        <Button
+                            android:id="@+id/btnSo2Report"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:text="SO² सूचना"
+                            android:textSize="9.5sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            app:backgroundTint="#355E3B"
+                            android:layout_marginEnd="4dp" />
+
+                        <Button
+                            android:id="@+id/btnSo3Report"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:text="SO³ सूचना"
+                            android:textSize="9.5sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            app:backgroundTint="#355E3B" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F5F9"
+    android:padding="8dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="4dp"
+        app:strokeWidth="1.5dp"
+        app:strokeColor="#CBD5E1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <!-- HEADER BANNER -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="#1565C0"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="12dp"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🎓 STUDENT ADMISSION PREVIEW"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- 1. BASIC DETAILS SECTION -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#BAE6FD">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- SECTION TITLE BAR -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#E3F2FD"
+                        android:padding="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="👤 BASIC DETAILS"
+                            android:textColor="#1565C0"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <!-- TOP ROW: STUDENT PHOTO & KEY FIELDS -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="10dp">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:gravity="center_horizontal"
+                                android:layout_marginEnd="12dp">
+
+                                <ImageView
+                                    android:id="@+id/ivPreviewPhoto"
+                                    android:layout_width="85dp"
+                                    android:layout_height="100dp"
+                                    android:scaleType="centerCrop"
+                                    android:background="#E2E8F0"
+                                    android:contentDescription="Student Photo" />
+
+                                <TextView
+                                    android:id="@+id/tvStudentPhotoBadge"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="✓ Photo Uploaded"
+                                    android:textSize="9sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#FFFFFF"
+                                    android:background="#2E7D32"
+                                    android:paddingHorizontal="6dp"
+                                    android:paddingVertical="2dp"
+                                    android:layout_marginTop="4dp" />
+                            </LinearLayout>
+
+                            <TableLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:stretchColumns="1">
+
+                                <TableRow android:layout_marginBottom="2dp">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Class" android:textStyle="bold" android:textColor="#0F172A" android:textSize="12sp" />
+                                    <TextView android:id="@+id/tvPreviewClass" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#0F172A" android:textSize="12sp" android:layout_marginStart="6dp" />
+                                </TableRow>
+
+                                <TableRow android:layout_marginBottom="2dp">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SR Number" android:textStyle="bold" android:textColor="#0F172A" android:textSize="12sp" />
+                                    <TextView android:id="@+id/tvPreviewSrNumber" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#0F172A" android:textSize="12sp" android:layout_marginStart="6dp" />
+                                </TableRow>
+
+                                <TableRow android:layout_marginBottom="2dp">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Unique ID" android:textStyle="bold" android:textColor="#0F172A" android:textSize="12sp" />
+                                    <TextView android:id="@+id/tvPreviewUniqueId" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#0F172A" android:textSize="12sp" android:layout_marginStart="6dp" />
+                                </TableRow>
+
+                                <TableRow android:layout_marginBottom="2dp">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PEN No" android:textStyle="bold" android:textColor="#0F172A" android:textSize="12sp" />
+                                    <TextView android:id="@+id/tvPreviewPenNo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#0F172A" android:textSize="12sp" android:layout_marginStart="6dp" />
+                                </TableRow>
+
+                                <TableRow android:layout_marginBottom="2dp">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="APAAR ID" android:textStyle="bold" android:textColor="#0F172A" android:textSize="12sp" />
+                                    <TextView android:id="@+id/tvPreviewAaparId" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#0F172A" android:textSize="12sp" android:layout_marginStart="6dp" />
+                                </TableRow>
+
+                                <TableRow android:layout_marginBottom="2dp">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Student Name" android:textStyle="bold" android:textColor="#0F172A" android:textSize="12sp" />
+                                    <TextView android:id="@+id/tvPreviewStudentName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textStyle="bold" android:textColor="#1565C0" android:textSize="12sp" android:layout_marginStart="6dp" />
+                                </TableRow>
+
+                                <TableRow android:layout_marginBottom="2dp">
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Date of Birth" android:textStyle="bold" android:textColor="#0F172A" android:textSize="12sp" />
+                                    <TextView android:id="@+id/tvPreviewDob" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#0F172A" android:textSize="12sp" android:layout_marginStart="6dp" />
+                                </TableRow>
+
+                                <TableRow>
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Admission Date" android:textStyle="bold" android:textColor="#0F172A" android:textSize="12sp" />
+                                    <TextView android:id="@+id/tvPreviewAdmissionDate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#0F172A" android:textSize="12sp" android:layout_marginStart="6dp" />
+                                </TableRow>
+
+                            </TableLayout>
+
+                        </LinearLayout>
+
+                        <!-- BOTTOM GRID IN LIGHT PASTEL BOX -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#F1F5F9"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="4dp">
+                                <TextView android:layout_width="110dp" android:layout_height="wrap_content" android:text="Student Aadhaar :" android:textStyle="bold" android:textSize="11sp" android:textColor="#334155" />
+                                <TextView android:id="@+id/tvPreviewStudentAdhar" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="11sp" android:textColor="#0F172A" />
+                                <TextView android:layout_width="95dp" android:layout_height="wrap_content" android:text="Caste Category :" android:textStyle="bold" android:textSize="11sp" android:textColor="#334155" />
+                                <TextView android:id="@+id/tvPreviewCaste" android:layout_width="70dp" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:textColor="#1565C0" />
+                            </LinearLayout>
+
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="4dp">
+                                <TextView android:layout_width="110dp" android:layout_height="wrap_content" android:text="Care of (C/o) :" android:textStyle="bold" android:textSize="11sp" android:textColor="#334155" />
+                                <TextView android:id="@+id/tvPreviewCo" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="11sp" android:textColor="#0F172A" />
+                                <TextView android:layout_width="95dp" android:layout_height="wrap_content" android:text="DBT Status :" android:textStyle="bold" android:textSize="11sp" android:textColor="#334155" />
+                                <TextView android:id="@+id/tvPreviewDbt" android:layout_width="70dp" android:layout_height="wrap_content" android:textSize="11sp" android:textStyle="bold" android:textColor="#2E7D32" />
+                            </LinearLayout>
+
+                            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                                <TextView android:layout_width="110dp" android:layout_height="wrap_content" android:text="Gender :" android:textStyle="bold" android:textSize="11sp" android:textColor="#334155" />
+                                <TextView android:id="@+id/tvPreviewGender" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="11sp" android:textColor="#0F172A" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 2. PARENT DETAILS SECTION -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#DDD6FE">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#EDE7F6"
+                        android:padding="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="👥 PARENT DETAILS"
+                            android:textColor="#5E35B1"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:baselineAligned="false"
+                        android:padding="8dp">
+
+                        <!-- FATHER CARD -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#F8FAFC"
+                            android:padding="6dp"
+                            android:layout_marginEnd="4dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:gravity="center_horizontal"
+                                android:layout_marginEnd="6dp">
+
+                                <ImageView
+                                    android:id="@+id/ivPreviewFatherPhoto"
+                                    android:layout_width="50dp"
+                                    android:layout_height="60dp"
+                                    android:scaleType="centerCrop"
+                                    android:background="#E2E8F0"
+                                    android:contentDescription="Father Photo" />
+
+                                <TextView
+                                    android:id="@+id/tvFatherPhotoBadge"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="✓ Photo Uploaded"
+                                    android:textSize="8sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#FFFFFF"
+                                    android:background="#2E7D32"
+                                    android:paddingHorizontal="4dp"
+                                    android:paddingVertical="1dp"
+                                    android:layout_marginTop="2dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Father Name :" android:textStyle="bold" android:textSize="10sp" android:textColor="#475569" />
+                                <TextView android:id="@+id/tvPreviewFatherName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textStyle="bold" android:textSize="11sp" android:textColor="#0F172A" android:layout_marginBottom="2dp" />
+
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Father Aadhaar :" android:textStyle="bold" android:textSize="10sp" android:textColor="#475569" />
+                                <TextView android:id="@+id/tvPreviewFatherAdhar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="11sp" android:textColor="#0F172A" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <!-- MOTHER CARD -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#F8FAFC"
+                            android:padding="6dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:gravity="center_horizontal"
+                                android:layout_marginEnd="6dp">
+
+                                <ImageView
+                                    android:id="@+id/ivPreviewMotherPhoto"
+                                    android:layout_width="50dp"
+                                    android:layout_height="60dp"
+                                    android:scaleType="centerCrop"
+                                    android:background="#E2E8F0"
+                                    android:contentDescription="Mother Photo" />
+
+                                <TextView
+                                    android:id="@+id/tvMotherPhotoBadge"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="✓ Photo Uploaded"
+                                    android:textSize="8sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#FFFFFF"
+                                    android:background="#2E7D32"
+                                    android:paddingHorizontal="4dp"
+                                    android:paddingVertical="1dp"
+                                    android:layout_marginTop="2dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mother Name :" android:textStyle="bold" android:textSize="10sp" android:textColor="#475569" />
+                                <TextView android:id="@+id/tvPreviewMotherName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textStyle="bold" android:textSize="11sp" android:textColor="#0F172A" android:layout_marginBottom="2dp" />
+
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mother Aadhaar :" android:textStyle="bold" android:textSize="10sp" android:textColor="#475569" />
+                                <TextView android:id="@+id/tvPreviewMotherAdhar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="11sp" android:textColor="#0F172A" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 3. HEALTH DETAILS SECTION -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#BBF7D0">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#E8F5E9"
+                        android:padding="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="🩺 HEALTH DETAILS"
+                            android:textColor="#2E7D32"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvHealthIncluded"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#2E7D32"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="2dp"
+                            android:text="Included : Yes"
+                            android:textColor="#FFFFFF"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#F0FDF4"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="4dp">
+                            <TextView android:layout_width="85dp" android:layout_height="wrap_content" android:text="Height :" android:textStyle="bold" android:textSize="11sp" android:textColor="#334155" />
+                            <TextView android:id="@+id/tvPreviewHeight" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="11sp" android:textColor="#0F172A" />
+                            <TextView android:layout_width="85dp" android:layout_height="wrap_content" android:text="Hb Level :" android:textStyle="bold" android:textSize="11sp" android:textColor="#334155" />
+                            <TextView android:id="@+id/tvPreviewHb" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="11sp" android:textColor="#0F172A" />
+                        </LinearLayout>
+
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="4dp">
+                            <TextView android:layout_width="85dp" android:layout_height="wrap_content" android:text="Weight :" android:textStyle="bold" android:textSize="11sp" android:textColor="#334155" />
+                            <TextView android:id="@+id/tvPreviewWeight" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="11sp" android:textColor="#0F172A" />
+                            <TextView android:layout_width="85dp" android:layout_height="wrap_content" android:text="Eye Sight :" android:textStyle="bold" android:textSize="11sp" android:textColor="#334155" />
+                            <TextView android:id="@+id/tvPreviewEyeSight" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="11sp" android:textColor="#0F172A" />
+                        </LinearLayout>
+
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                            <TextView android:layout_width="85dp" android:layout_height="wrap_content" android:text="Blood Group :" android:textStyle="bold" android:textSize="11sp" android:textColor="#334155" />
+                            <TextView android:id="@+id/tvPreviewBloodGroup" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="11sp" android:textColor="#0F172A" />
+                            <TextView android:layout_width="85dp" android:layout_height="wrap_content" android:text="Deworming :" android:textStyle="bold" android:textSize="11sp" android:textColor="#334155" />
+                            <TextView android:id="@+id/tvPreviewDeworming" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="11sp" android:textColor="#0F172A" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 4. BANK DETAILS SECTION -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#BAE6FD">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#E3F2FD"
+                        android:padding="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="🏦 BANK DETAILS"
+                            android:textColor="#1565C0"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvBankIncluded"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#2E7D32"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="2dp"
+                            android:text="Included : Yes"
+                            android:textColor="#FFFFFF"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#F0F9FF"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="4dp">
+                            <TextView android:layout_width="125dp" android:layout_height="wrap_content" android:text="Account Holder Name :" android:textStyle="bold" android:textSize="11sp" android:textColor="#334155" />
+                            <TextView android:id="@+id/tvPreviewAcHolderName" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="11sp" android:textColor="#0F172A" />
+                            <TextView android:layout_width="85dp" android:layout_height="wrap_content" android:text="IFSC Code :" android:textStyle="bold" android:textSize="11sp" android:textColor="#334155" />
+                            <TextView android:id="@+id/tvPreviewIfsc" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="11sp" android:textColor="#0F172A" />
+                        </LinearLayout>
+
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                            <TextView android:layout_width="125dp" android:layout_height="wrap_content" android:text="Account Number :" android:textStyle="bold" android:textSize="11sp" android:textColor="#334155" />
+                            <TextView android:id="@+id/tvPreviewAcNo" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="11sp" android:textColor="#0F172A" />
+                            <TextView android:layout_width="85dp" android:layout_height="wrap_content" android:text="Branch Name :" android:textStyle="bold" android:textSize="11sp" android:textColor="#334155" />
+                            <TextView android:id="@+id/tvPreviewBranch" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="11sp" android:textColor="#0F172A" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 5. ADDRESS & REMARKS SECTION -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#BAE6FD">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#E0F2FE"
+                        android:padding="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="📁 ATTACHED DOCUMENTS"
+                            android:textColor="#0369A1"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llPreviewDocumentsContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#F0F9FF"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 6. ADDRESS & REMARKS SECTION -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#FDE68A">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#FFF3E0"
+                        android:padding="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="📍 ADDRESS &amp; REMARKS"
+                            android:textColor="#E65100"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFBEB"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="4dp">
+                            <TextView android:layout_width="95dp" android:layout_height="wrap_content" android:text="Address :" android:textStyle="bold" android:textSize="11sp" android:textColor="#334155" />
+                            <TextView android:id="@+id/tvPreviewAddress" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="11sp" android:textColor="#0F172A" />
+                        </LinearLayout>
+
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                            <TextView android:layout_width="95dp" android:layout_height="wrap_content" android:text="Other Comments :" android:textStyle="bold" android:textSize="11sp" android:textColor="#334155" />
+                            <TextView android:id="@+id/tvPreviewOther" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="11sp" android:textColor="#0F172A" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ACTION BUTTONS (EDIT FORM | PRINT/PDF | DELETE | CLOSE) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="8dp">
+
+                <Button
+                    android:id="@+id/btnPreviewEdit"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="🖊 Edit Form"
+                    android:textSize="11sp"
+                    android:layout_marginEnd="4dp" />
+
+                <Button
+                    android:id="@+id/btnPreviewPrint"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="🖨 Print / PDF"
+                    android:textSize="11sp"
+                    android:layout_marginEnd="4dp" />
+
+                <Button
+                    android:id="@+id/btnPreviewDelete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="🗑 Delete"
+                    android:textSize="11sp"
+                    app:backgroundTint="#D32F2F"
+                    android:layout_marginEnd="4dp" />
+
+                <Button
+                    android:id="@+id/btnPreviewClose"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="Close"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</ScrollView>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F8FAFC">
+
+    <!-- HEADER TITLE BANNER -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TRASH &amp; RECOVERY"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:background="#800517"
+        android:padding="12dp"
+        android:gravity="center" />
+
+    <!-- SEARCH & FILTER CONTAINER -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:background="#FFFFFF"
+        android:elevation="2dp">
+
+        <EditText
+            android:id="@+id/etSearchTrash"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:hint="Search Name, SR, Unique ID, Aadhaar, Mobile, Father..."
+            android:textSize="13sp"
+            android:paddingHorizontal="12dp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:inputType="text"
+            android:maxLines="1"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Class Filter:"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#334155"
+                android:layout_marginEnd="8dp" />
+
+            <Spinner
+                android:id="@+id/spinnerClassFilter"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- BULK ACTIONS & COUNTER BAR -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:background="#E2E8F0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="6dp">
+
+            <TextView
+                android:id="@+id/tvSelectedCounter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0 students selected"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#1E293B" />
+
+            <Button
+                android:id="@+id/btnSelectAll"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="Select All"
+                android:textSize="11sp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnRestoreSelected"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:text="Restore"
+                android:textSize="11sp"
+                app:backgroundTint="#1D4ED8"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/btnDeleteSelected"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:text="Delete"
+                android:textSize="11sp"
+                app:backgroundTint="#D32F2F"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/btnEmptyTrash"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:text="Empty Trash"
+                android:textSize="11sp"
+                app:backgroundTint="#475569" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- RECYCLER VIEW -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTrashList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="4dp"
+        android:clipToPadding="false" />
+
+    <!-- EMPTY VIEW -->
+    <TextView
+        android:id="@+id/tvEmptyTrash"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Trash is empty"
+        android:textSize="16sp"
+        android:textColor="#94A3B8"
+        android:visibility="gone" />
+
+</LinearLayout>

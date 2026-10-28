@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="#CBD5E1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="6dp">
+
+            <TextView
+                android:id="@+id/tvSubjectName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Hindi"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#1E293B" />
+
+            <TextView
+                android:id="@+id/tvSubjectStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Active"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="#16A34A" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvSubjectDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Max: 100 | Pass: 33 | Order: 1 | Result: Yes"
+            android:textSize="12sp"
+            android:textColor="#64748B"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Actions Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <Button
+                android:id="@+id/btnSubMoveUp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:text="⬆"
+                android:textSize="12sp"
+                app:backgroundTint="#475569"
+                android:padding="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/btnSubMoveDown"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:text="⬇"
+                android:textSize="12sp"
+                app:backgroundTint="#475569"
+                android:padding="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/btnSubEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Edit"
+                android:textSize="11sp"
+                app:backgroundTint="#1565C0"
+                android:paddingHorizontal="10dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/btnSubDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Delete/Deactivate"
+                android:textSize="11sp"
+                app:backgroundTint="#EF4444"
+                android:paddingHorizontal="8dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

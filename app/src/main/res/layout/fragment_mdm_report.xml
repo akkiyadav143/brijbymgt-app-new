@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootMdmScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:id="@+id/rootMdmLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MDM REPORT &amp; MANAGEMENT"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#0D47A1"
+            android:layout_marginBottom="12dp" />
+
+        <!-- 1. DATABASE TOTALS CARDS -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                app:cardBackgroundColor="#E3F2FD"
+                app:cardCornerRadius="8dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Class 1–5 DB" android:textSize="11sp" android:textColor="#1565C0" />
+                    <TextView android:id="@+id/tvDbCount1to5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textSize="20sp" android:textStyle="bold" android:textColor="#0D47A1" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                app:cardBackgroundColor="#E8F5E9"
+                app:cardCornerRadius="8dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Class 6–8 DB" android:textSize="11sp" android:textColor="#2E7D32" />
+                    <TextView android:id="@+id/tvDbCount6to8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textSize="20sp" android:textStyle="bold" android:textColor="#1B5E20" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="#FFF3E0"
+                app:cardCornerRadius="8dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Class 1–8 DB" android:textSize="11sp" android:textColor="#E65100" />
+                    <TextView android:id="@+id/tvDbCount1to8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textSize="20sp" android:textStyle="bold" android:textColor="#E65100" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <!-- 2. CLASS-WISE TABLE -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CLASS-WISE MDM DATA TABLE"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginBottom="6dp" />
+
+        <TableLayout
+            android:id="@+id/tableMdm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*"
+            android:background="#FFFFFF"
+            android:padding="4dp"
+            android:layout_marginBottom="16dp">
+
+            <!-- Table Header -->
+            <TableRow android:background="#ECEFF1" android:padding="8dp">
+                <TextView android:text="Class" android:textStyle="bold" android:textSize="11.5sp" android:textColor="#0F172A" />
+                <TextView android:text="DB Total" android:textStyle="bold" android:textSize="11.5sp" android:textColor="#2E7D32" />
+                <TextView android:text="DB M/F" android:textStyle="bold" android:textSize="11.5sp" android:textColor="#0F172A" />
+                <TextView android:text="MDM Male" android:textStyle="bold" android:textSize="11.5sp" android:textColor="#014EB1" />
+                <TextView android:text="MDM Female" android:textStyle="bold" android:textSize="11.5sp" android:textColor="#D92200" />
+                <TextView android:text="MDM Total" android:textStyle="bold" android:textSize="11.5sp" android:textColor="#1565C0" />
+                <TextView android:text="Diff M/F" android:textStyle="bold" android:textSize="11.5sp" android:textColor="#475569" />
+            </TableRow>
+
+            <!-- ROWS FOR CLASS 1 TO 8 WILL BE GENERATED / BOUND IN FRAGMENT -->
+        </TableLayout>
+
+        <!-- 3. MDM ABSTRACT SUMMARIES -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MDM SUMMARY ABSTRACTS"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginBottom="8dp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView android:id="@+id/tvMdmSummary1to5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="13sp" android:textColor="#263238" android:layout_marginBottom="6dp" />
+                <TextView android:id="@+id/tvMdmSummary6to8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="13sp" android:textColor="#263238" android:layout_marginBottom="6dp" />
+                <TextView android:id="@+id/tvMdmSummary1to8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="14sp" android:textStyle="bold" android:textColor="#1565C0" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 4. ACTION BUTTONS: SAVE, RESET, SHARE PDF, PRINT PDF -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+
+            <Button
+                android:id="@+id/btnSaveMdm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="SAVE"
+                android:textSize="11sp"
+                app:backgroundTint="#2E7D32"
+                android:layout_marginEnd="3dp" />
+
+            <Button
+                android:id="@+id/btnResetMdm"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="RESET"
+                android:textSize="11sp"
+                android:layout_marginEnd="3dp" />
+
+            <Button
+                android:id="@+id/btnShareMdmPdf"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:text="SHARE PDF"
+                android:textSize="11sp"
+                android:layout_marginEnd="3dp" />
+
+            <Button
+                android:id="@+id/btnPrintMdmPdf"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:text="PRINT PDF"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

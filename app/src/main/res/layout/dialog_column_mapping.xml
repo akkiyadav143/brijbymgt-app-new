@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAFC"
+    android:padding="12dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <!-- TITLE -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📥 IMPORT DATA &amp; COLUMN MAPPING"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#0D47A1"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Map file columns to app fields and resolve duplicate records:"
+                android:textSize="12sp"
+                android:textColor="#475569"
+                android:layout_marginBottom="10dp" />
+
+            <!-- COLUMN MAPPINGS CONTAINER -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1. COLUMN MAPPINGS"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#1E293B"
+                android:layout_marginBottom="4dp" />
+
+            <LinearLayout
+                android:id="@+id/llColumnMappingContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#F1F5F9"
+                android:padding="8dp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- DUPLICATE ACTION SELECTION -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2. DUPLICATE RECORD ACTION"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#1E293B"
+                android:layout_marginBottom="4dp" />
+
+            <RadioGroup
+                android:id="@+id/rgDuplicateAction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#F8FAFC"
+                android:padding="8dp"
+                android:layout_marginBottom="12dp">
+
+                <RadioButton
+                    android:id="@+id/rbDupSkip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Skip Duplicate Records (Default)"
+                    android:checked="true"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/rbDupUpdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Update Existing Records in Database"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/rbDupImportNew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Import as New Records"
+                    android:textSize="12sp" />
+
+            </RadioGroup>
+
+            <!-- IMPORT PREVIEW STATS -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3. IMPORT PREVIEW RECORDS"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#1E293B"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/tvImportPreviewStats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#E2E8F0"
+                android:padding="8dp"
+                android:text="Total Rows: 0 | Valid: 0 | Duplicate: 0 | Errors: 0"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#0F172A"
+                android:layout_marginBottom="8dp" />
+
+            <!-- PREVIEW RECYCLERVIEW -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvImportPreviewRows"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="#FFFFFF"
+                android:layout_marginBottom="12dp" />
+
+            <!-- ACTION BUTTONS -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end">
+
+                <Button
+                    android:id="@+id/btnCancelImport"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CANCEL"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/btnExecuteImport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="IMPORT VALID RECORDS"
+                    app:backgroundTint="#1565C0" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</ScrollView>
