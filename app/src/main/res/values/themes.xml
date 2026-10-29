@@ -20,7 +20,9 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.brijbymgt" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
+        <item name="colorPrimary">#0D47A1</item>
         <item name="colorSecondary">#0D47A1</item>
+        <item name="colorTertiary">#0D47A1</item>
         <item name="textInputStyle">@style/DarkBlueHintTextInputLayout</item>
     </style>
 
