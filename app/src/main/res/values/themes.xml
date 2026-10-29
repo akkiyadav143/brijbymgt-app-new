@@ -6,7 +6,7 @@
 
     <style name="Widget.brijbymgt.TextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
         <item name="android:textColor">#212529</item>
-        <item name="android:textColorHint">#383D41</item>
+        <item name="android:textColorHint">#212529</item>
         <item name="android:textSize">16sp</item>
     </style>
 

@@ -46,7 +46,7 @@
                 android:inputType="textPersonName"
                 android:maxLines="1"
                 android:textColor="#212529"
-                android:textColorHint="#383D41"
+                android:textColorHint="#212529"
                 android:textSize="16sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -67,7 +67,7 @@
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:textColor="#212529"
-                android:textColorHint="#383D41"
+                android:textColorHint="#212529"
                 android:textSize="16sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -89,7 +89,7 @@
                 android:maxLength="15"
                 android:maxLines="1"
                 android:textColor="#212529"
-                android:textColorHint="#383D41"
+                android:textColorHint="#212529"
                 android:textSize="16sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -129,7 +129,7 @@
                     android:inputType="number"
                     android:maxLines="1"
                     android:textColor="#212529"
-                    android:textColorHint="#383D41"
+                    android:textColorHint="#212529"
                     android:textSize="16sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
