@@ -51,25 +51,35 @@ class StudentRepository(
     }
 
     private fun getSchoolId(): String {
+        val ctx = context ?: try { SchoolApp.instance } catch (_: Exception) { null }
+        if (ctx != null) {
+            val prefs = ctx.getSharedPreferences("auth_prefs", Context.MODE_PRIVATE)
+            val email = prefs.getString("user_email", null)
+            if (!email.isNullOrBlank()) {
+                val cleanSchoolId = email.lowercase().trim().replace(".", "_")
+                Log.d("StudentRepository", "getSchoolId: Using Email SchoolId = $cleanSchoolId")
+                return cleanSchoolId
+            }
+        }
+
         val authUser = FirebaseAuth.getInstance().currentUser
+        if (authUser != null && !authUser.email.isNullOrBlank()) {
+            val cleanSchoolId = authUser.email!!.lowercase().trim().replace(".", "_")
+            Log.d("StudentRepository", "getSchoolId: Using Auth Email SchoolId = $cleanSchoolId")
+            return cleanSchoolId
+        }
+
         if (authUser != null && !authUser.uid.isBlank()) {
             Log.d("StudentRepository", "getSchoolId: Using Firebase Auth UID = ${authUser.uid}")
             return authUser.uid
         }
 
-        val ctx = context ?: try { SchoolApp.instance } catch (_: Exception) { null }
         if (ctx != null) {
             val prefs = ctx.getSharedPreferences("auth_prefs", Context.MODE_PRIVATE)
             val uid = prefs.getString("user_uid", null)
             if (!uid.isNullOrBlank()) {
                 Log.d("StudentRepository", "getSchoolId: Using SharedPreferences UID = $uid")
                 return uid
-            }
-            val email = prefs.getString("user_email", null)
-            if (!email.isNullOrBlank()) {
-                val cleanSchoolId = email.lowercase().trim().replace(".", "_")
-                Log.d("StudentRepository", "getSchoolId: Using SharedPreferences Email SchoolId = $cleanSchoolId")
-                return cleanSchoolId
             }
         }
 
