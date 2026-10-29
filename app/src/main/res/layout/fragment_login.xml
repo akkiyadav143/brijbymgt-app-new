@@ -54,7 +54,7 @@
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:textColor="#212529"
-                android:textColorHint="#6C757D"
+                android:textColorHint="#383D41"
                 android:textSize="16sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
