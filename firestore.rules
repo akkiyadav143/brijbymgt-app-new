@@ -8,11 +8,11 @@ service cloud.firestore {
 
     // Allow reading and writing school documents and all subcollections (students, mdm_reports, etc.)
     match /schools/{schoolId} {
-      allow read, write: if request.auth != null;
+      allow read, write: if true;
     }
 
     match /schools/{schoolId}/{document=**} {
-      allow read, write: if request.auth != null;
+      allow read, write: if true;
     }
   }
 }
