@@ -12,7 +12,8 @@
 
     <style name="DarkBlueHintTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="hintTextColor">#0D47A1</item>
-        <item name="android:textColorHint">#0D47A1</item>
+        <item name="android:textColorHint">#212529</item>
+        <item name="boxStrokeColor">#0D47A1</item>
         <item name="hintTextAppearance">@style/DarkBlueHintTextAppearance</item>
         <item name="editTextStyle">@style/Widget.brijbymgt.TextInputEditText</item>
     </style>

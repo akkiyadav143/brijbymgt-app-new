@@ -24,6 +24,8 @@
         android:background="#FFFFFF"
         app:elevation="8dp"
         app:labelVisibilityMode="labeled"
+        app:itemTextColor="@color/bottom_nav_color"
+        app:itemIconTint="@color/bottom_nav_color"
         app:menu="@menu/bottom_nav_menu" />
 
 </RelativeLayout>
