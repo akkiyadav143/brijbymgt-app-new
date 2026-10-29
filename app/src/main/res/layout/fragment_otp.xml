@@ -58,7 +58,9 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 android:letterSpacing="0.2"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:textColor="#212529"
+                android:textColorHint="#6C757D" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

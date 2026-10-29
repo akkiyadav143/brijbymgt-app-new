@@ -44,7 +44,10 @@
                 android:layout_height="wrap_content"
                 android:hint="Full Name"
                 android:inputType="textPersonName"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:textColor="#212529"
+                android:textColorHint="#6C757D"
+                android:textSize="16sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -62,7 +65,10 @@
                 android:layout_height="wrap_content"
                 android:hint="Email Address"
                 android:inputType="textEmailAddress"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:textColor="#212529"
+                android:textColorHint="#6C757D"
+                android:textSize="16sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,7 +87,10 @@
                 android:hint="Mobile Number"
                 android:inputType="phone"
                 android:maxLength="15"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:textColor="#212529"
+                android:textColorHint="#6C757D"
+                android:textSize="16sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -118,7 +127,10 @@
                     android:layout_height="wrap_content"
                     android:hint="Answer"
                     android:inputType="number"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:textColor="#212529"
+                    android:textColorHint="#6C757D"
+                    android:textSize="16sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
