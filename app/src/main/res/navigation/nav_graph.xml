@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/nav_dashboard"
-        android:name="com.brijby77.ui.dashboard.DashboardFragment"
+        android:name="com.brijbymgt.ui.dashboard.DashboardFragment"
         android:label="Home Dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/nav_add_student"
-        android:name="com.brijby77.ui.addstudent.AddStudentFragment"
+        android:name="com.brijbymgt.ui.addstudent.AddStudentFragment"
         android:label="Add Student"
         tools:layout="@layout/fragment_add_student">
         <argument
@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/nav_student_list"
-        android:name="com.brijby77.ui.studentlist.StudentListFragment"
+        android:name="com.brijbymgt.ui.studentlist.StudentListFragment"
         android:label="Student List"
         tools:layout="@layout/fragment_student_list">
         <argument
@@ -35,44 +35,44 @@
 
     <fragment
         android:id="@+id/nav_cl0_pass"
-        android:name="com.brijby77.ui.cl0pass.Cl0PassFragment"
+        android:name="com.brijbymgt.ui.cl0pass.Cl0PassFragment"
         android:label="CL 0 &amp; CL Pass"
         tools:layout="@layout/fragment_cl0_pass" />
 
     <fragment
         android:id="@+id/nav_export_import"
-        android:name="com.brijby77.ui.exportimport.ExportImportFragment"
+        android:name="com.brijbymgt.ui.exportimport.ExportImportFragment"
         android:label="Export / Import"
         tools:layout="@layout/fragment_export_import" />
 
     <fragment
         android:id="@+id/nav_mdm"
-        android:name="com.brijby77.ui.mdm.MdmReportFragment"
+        android:name="com.brijbymgt.ui.mdm.MdmReportFragment"
         android:label="MDM Report"
         tools:layout="@layout/fragment_mdm_report" />
 
     <fragment
         android:id="@+id/nav_caste_report"
-        android:name="com.brijby77.ui.castereport.CasteReportFragment"
+        android:name="com.brijbymgt.ui.castereport.CasteReportFragment"
         android:label="Caste Report"
         tools:layout="@layout/fragment_caste_report" />
 
     <fragment
         android:id="@+id/nav_trash"
-        android:name="com.brijby77.ui.trash.TrashFragment"
+        android:name="com.brijbymgt.ui.trash.TrashFragment"
         android:label="Trash"
         tools:layout="@layout/fragment_trash" />
 
     <fragment
         android:id="@+id/nav_selected_export"
-        android:name="com.brijby77.ui.exportimport.SelectedExportFragment"
+        android:name="com.brijbymgt.ui.exportimport.SelectedExportFragment"
         android:label="Selected Export"
         tools:layout="@layout/fragment_selected_export" />
 
     <!-- Notes Module Destinations -->
     <fragment
         android:id="@+id/nav_notes"
-        android:name="com.brijby77.ui.notes.NotesListFragment"
+        android:name="com.brijbymgt.ui.notes.NotesListFragment"
         android:label="मेरी सूचना"
         tools:layout="@layout/fragment_notes_list">
         <action
@@ -85,7 +85,7 @@
 
     <fragment
         android:id="@+id/nav_add_edit_note"
-        android:name="com.brijby77.ui.notes.AddEditNoteFragment"
+        android:name="com.brijbymgt.ui.notes.AddEditNoteFragment"
         android:label="Add / Edit Note"
         tools:layout="@layout/fragment_add_edit_note">
         <argument
@@ -96,7 +96,7 @@
 
     <fragment
         android:id="@+id/nav_note_detail"
-        android:name="com.brijby77.ui.notes.NoteDetailFragment"
+        android:name="com.brijbymgt.ui.notes.NoteDetailFragment"
         android:label="Note Detail"
         tools:layout="@layout/fragment_note_detail">
         <argument
@@ -111,115 +111,115 @@
     <!-- Examination & Auto Result Management Module Destinations -->
     <fragment
         android:id="@+id/nav_exam_dashboard"
-        android:name="com.brijby77.ui.exam.ExamDashboardFragment"
+        android:name="com.brijbymgt.ui.exam.ExamDashboardFragment"
         android:label="Exam Dashboard"
         tools:layout="@layout/fragment_exam_dashboard" />
 
     <fragment
         android:id="@+id/nav_subject_management"
-        android:name="com.brijby77.ui.exam.SubjectManagementFragment"
+        android:name="com.brijbymgt.ui.exam.SubjectManagementFragment"
         android:label="Subject Management"
         tools:layout="@layout/fragment_subject_management" />
 
     <fragment
         android:id="@+id/nav_create_exam"
-        android:name="com.brijby77.ui.exam.CreateExamFragment"
+        android:name="com.brijbymgt.ui.exam.CreateExamFragment"
         android:label="Create Exam"
         tools:layout="@layout/fragment_create_exam" />
 
     <fragment
         android:id="@+id/nav_exam_list"
-        android:name="com.brijby77.ui.exam.ExamListFragment"
+        android:name="com.brijbymgt.ui.exam.ExamListFragment"
         android:label="Exam List"
         tools:layout="@layout/fragment_exam_list" />
 
     <fragment
         android:id="@+id/nav_marks_entry"
-        android:name="com.brijby77.ui.exam.MarksEntryFragment"
+        android:name="com.brijbymgt.ui.exam.MarksEntryFragment"
         android:label="Marks Entry"
         tools:layout="@layout/fragment_marks_entry" />
 
     <fragment
         android:id="@+id/nav_result"
-        android:name="com.brijby77.ui.exam.ResultFragment"
+        android:name="com.brijbymgt.ui.exam.ResultFragment"
         android:label="Exam Results"
         tools:layout="@layout/fragment_result" />
 
     <fragment
         android:id="@+id/nav_report_card"
-        android:name="com.brijby77.ui.exam.ReportCardFragment"
+        android:name="com.brijbymgt.ui.exam.ReportCardFragment"
         android:label="Report Card"
         tools:layout="@layout/fragment_report_card" />
 
     <fragment
         android:id="@+id/nav_class_result"
-        android:name="com.brijby77.ui.exam.ClassResultFragment"
+        android:name="com.brijbymgt.ui.exam.ClassResultFragment"
         android:label="Class Result &amp; Ranks"
         tools:layout="@layout/fragment_class_result" />
 
     <fragment
         android:id="@+id/nav_subject_result"
-        android:name="com.brijby77.ui.exam.SubjectResultFragment"
+        android:name="com.brijbymgt.ui.exam.SubjectResultFragment"
         android:label="Subject Result Analysis"
         tools:layout="@layout/fragment_subject_result" />
 
     <fragment
         android:id="@+id/nav_result_summary"
-        android:name="com.brijby77.ui.exam.ResultSummaryFragment"
+        android:name="com.brijbymgt.ui.exam.ResultSummaryFragment"
         android:label="Result Summary"
         tools:layout="@layout/fragment_result_summary" />
 
     <fragment
         android:id="@+id/nav_exam_settings"
-        android:name="com.brijby77.ui.exam.ExamSettingsFragment"
+        android:name="com.brijbymgt.ui.exam.ExamSettingsFragment"
         android:label="Exam Settings"
         tools:layout="@layout/fragment_exam_settings" />
 
     <fragment
         android:id="@+id/nav_full_report"
-        android:name="com.brijby77.ui.exam.FullReportFragment"
+        android:name="com.brijbymgt.ui.exam.FullReportFragment"
         android:label="Full Report Marksheets"
         tools:layout="@layout/fragment_full_report" />
 
     <fragment
         android:id="@+id/nav_essential_links"
-        android:name="com.brijby77.ui.links.EssentialLinksFragment"
+        android:name="com.brijbymgt.ui.links.EssentialLinksFragment"
         android:label="@string/essential_links_title"
         tools:layout="@layout/fragment_essential_links" />
 
     <fragment
         android:id="@+id/nav_tc_print"
-        android:name="com.brijby77.ui.tc.TcPrintFragment"
+        android:name="com.brijbymgt.ui.tc.TcPrintFragment"
         android:label="@string/tc_print_title"
         tools:layout="@layout/fragment_tc_print" />
 
     <fragment
         android:id="@+id/nav_tc_print2"
-        android:name="com.brijby77.ui.tc.TcPrint2Fragment"
+        android:name="com.brijbymgt.ui.tc.TcPrint2Fragment"
         android:label="TC Print 2"
         tools:layout="@layout/fragment_tc_print2" />
 
     <fragment
         android:id="@+id/nav_so2"
-        android:name="com.brijby77.ui.so2.So2Fragment"
+        android:name="com.brijbymgt.ui.so2.So2Fragment"
         android:label="Form S02 / UDISE"
         tools:layout="@layout/fragment_so2" />
 
     <fragment
         android:id="@+id/nav_so3"
-        android:name="com.brijby77.ui.so3.So3Fragment"
+        android:name="com.brijbymgt.ui.so3.So3Fragment"
         android:label="Form S03 / UDISE"
         tools:layout="@layout/fragment_so3" />
 
     <fragment
         android:id="@+id/nav_furniture"
-        android:name="com.brijby77.ui.furniture.FurnitureFragment"
+        android:name="com.brijbymgt.ui.furniture.FurnitureFragment"
         android:label="फर्नीचर सूचना"
         tools:layout="@layout/fragment_furniture" />
 
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.brijby77.ui.auth.ProfileFragment"
+        android:name="com.brijbymgt.ui.auth.ProfileFragment"
         android:label="User Profile"
         tools:layout="@layout/fragment_profile">
         <action
@@ -232,13 +232,13 @@
 
     <fragment
         android:id="@+id/privacyPolicyFragment"
-        android:name="com.brijby77.ui.auth.PrivacyPolicyFragment"
+        android:name="com.brijbymgt.ui.auth.PrivacyPolicyFragment"
         android:label="Privacy Policy"
         tools:layout="@layout/fragment_privacy_policy" />
 
     <fragment
         android:id="@+id/termsFragment"
-        android:name="com.brijby77.ui.auth.TermsFragment"
+        android:name="com.brijbymgt.ui.auth.TermsFragment"
         android:label="Terms &amp; Conditions"
         tools:layout="@layout/fragment_terms" />
 

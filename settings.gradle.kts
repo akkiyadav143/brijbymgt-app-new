@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "brijby7"
+rootProject.name = "brijbymgt"
 include(":app")
  

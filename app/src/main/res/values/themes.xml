@@ -4,7 +4,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="Widget.Brijby7.TextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+    <style name="Widget.brijbymgt.TextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
         <item name="android:textColor">#212529</item>
         <item name="android:textColorHint">#6C757D</item>
         <item name="android:textSize">16sp</item>
@@ -14,15 +14,15 @@
         <item name="hintTextColor">#0D47A1</item>
         <item name="android:textColorHint">#0D47A1</item>
         <item name="hintTextAppearance">@style/DarkBlueHintTextAppearance</item>
-        <item name="editTextStyle">@style/Widget.Brijby7.TextInputEditText</item>
+        <item name="editTextStyle">@style/Widget.brijbymgt.TextInputEditText</item>
     </style>
 
     <!-- Base application theme. -->
-    <style name="Base.Theme.Brijby7" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.brijbymgt" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorSecondary">#0D47A1</item>
         <item name="textInputStyle">@style/DarkBlueHintTextInputLayout</item>
     </style>
 
-    <style name="Theme.Brijby7" parent="Base.Theme.Brijby7" />
+    <style name="Theme.brijbymgt" parent="Base.Theme.brijbymgt" />
 </resources>

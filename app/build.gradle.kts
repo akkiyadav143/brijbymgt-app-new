@@ -1,14 +1,19 @@
 ﻿plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.google.services)
+}
+
+base {
+    archivesName.set("brijbymgt")
 }
 
 android {
-    namespace = "com.brijby77"
+    namespace = "com.brijbymgt"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.brijby77"
+        applicationId = "com.brijbymgt"
         minSdk = 26
         targetSdk = 37
         versionCode = 1
@@ -47,8 +52,13 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     add("ksp", libs.androidx.room.compiler)
 
+    // Firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.database)
+    implementation(libs.firebase.auth)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
 }
-

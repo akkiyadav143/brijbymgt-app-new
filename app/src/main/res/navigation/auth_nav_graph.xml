@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.brijby77.ui.auth.LoginFragment"
+        android:name="com.brijbymgt.ui.auth.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_login">
         <action
@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.brijby77.ui.auth.RegisterFragment"
+        android:name="com.brijbymgt.ui.auth.RegisterFragment"
         android:label="Register"
         tools:layout="@layout/fragment_register">
         <action
@@ -42,19 +42,19 @@
 
     <fragment
         android:id="@+id/otpFragment"
-        android:name="com.brijby77.ui.auth.OtpFragment"
+        android:name="com.brijbymgt.ui.auth.OtpFragment"
         android:label="OTP Verification"
         tools:layout="@layout/fragment_otp" />
 
     <fragment
         android:id="@+id/privacyPolicyFragment"
-        android:name="com.brijby77.ui.auth.PrivacyPolicyFragment"
+        android:name="com.brijbymgt.ui.auth.PrivacyPolicyFragment"
         android:label="Privacy Policy"
         tools:layout="@layout/fragment_privacy_policy" />
 
     <fragment
         android:id="@+id/termsFragment"
-        android:name="com.brijby77.ui.auth.TermsFragment"
+        android:name="com.brijbymgt.ui.auth.TermsFragment"
         android:label="Terms &amp; Conditions"
         tools:layout="@layout/fragment_terms" />
 
