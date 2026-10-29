@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow reading and writing user documents
+    match /users/{userId} {
+      allow read, write: if true;
+    }
+
+    // Allow reading and writing school documents and all subcollections (students, mdm_reports, etc.)
+    match /schools/{schoolId} {
+      allow read, write: if request.auth != null;
+    }
+
+    match /schools/{schoolId}/{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
