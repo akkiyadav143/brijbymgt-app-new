@@ -2,6 +2,7 @@
 
 import android.content.Context
 import android.util.Log
+import com.brijbymgt.SchoolApp
 import com.brijbymgt.data.dao.BankDetailsDao
 import com.brijbymgt.data.dao.DocumentDao
 import com.brijbymgt.data.dao.HealthDetailsDao
@@ -52,15 +53,27 @@ class StudentRepository(
     private fun getSchoolId(): String {
         val authUser = FirebaseAuth.getInstance().currentUser
         if (authUser != null && !authUser.uid.isBlank()) {
+            Log.d("StudentRepository", "getSchoolId: Using Firebase Auth UID = ${authUser.uid}")
             return authUser.uid
         }
-        if (context != null) {
-            val prefs = context.getSharedPreferences("auth_prefs", Context.MODE_PRIVATE)
+
+        val ctx = context ?: try { SchoolApp.instance } catch (_: Exception) { null }
+        if (ctx != null) {
+            val prefs = ctx.getSharedPreferences("auth_prefs", Context.MODE_PRIVATE)
+            val uid = prefs.getString("user_uid", null)
+            if (!uid.isNullOrBlank()) {
+                Log.d("StudentRepository", "getSchoolId: Using SharedPreferences UID = $uid")
+                return uid
+            }
             val email = prefs.getString("user_email", null)
             if (!email.isNullOrBlank()) {
-                return email.lowercase().trim().replace(".", "_")
+                val cleanSchoolId = email.lowercase().trim().replace(".", "_")
+                Log.d("StudentRepository", "getSchoolId: Using SharedPreferences Email SchoolId = $cleanSchoolId")
+                return cleanSchoolId
             }
         }
+
+        Log.w("StudentRepository", "getSchoolId: Falling back to default_school")
         return "default_school"
     }
 
