@@ -91,7 +91,11 @@ class StudentRepository(
         withContext(Dispatchers.IO) {
             try {
                 val schoolId = getSchoolId()
-                if (schoolId == "default_school") return@withContext
+                Log.d("StudentRepository", "syncFromFirestore: starting sync for schoolId=$schoolId")
+                if (schoolId == "default_school") {
+                    Log.w("StudentRepository", "syncFromFirestore: schoolId is default_school, skipping sync")
+                    return@withContext
+                }
                 val firestore = FirebaseFirestore.getInstance()
 
                 // 1. Pull Students from Firestore
@@ -100,6 +104,7 @@ class StudentRepository(
                     .collection("students")
                     .get()
                     .addOnSuccessListener { snapshot ->
+                        Log.d("StudentRepository", "syncFromFirestore: Students query success for $schoolId. Found ${snapshot.size()} documents.")
                         CoroutineScope(Dispatchers.IO).launch {
                             for (doc in snapshot.documents) {
                                 try {
@@ -162,13 +167,13 @@ class StudentRepository(
 
                                     Log.d("StudentRepository", "Pulled student $id from Firestore successfully")
                                 } catch (e: Exception) {
-                                    Log.e("StudentRepository", "Error parsing pulled student: ${e.message}")
+                                    Log.e("StudentRepository", "Error parsing pulled student: ${e.message}", e)
                                 }
                             }
                         }
                     }
                     .addOnFailureListener { e ->
-                        Log.e("StudentRepository", "Failed to pull students from Firestore: ${e.message}")
+                        Log.e("StudentRepository", "Failed to pull students from Firestore for $schoolId: ${e.message}", e)
                     }
 
                 // 2. Pull MDM Reports from Firestore
@@ -178,6 +183,7 @@ class StudentRepository(
                     .document("all_reports")
                     .get()
                     .addOnSuccessListener { doc ->
+                        Log.d("StudentRepository", "syncFromFirestore: MDM reports query success for $schoolId. Exists=${doc.exists()}")
                         if (doc.exists()) {
                             @Suppress("UNCHECKED_CAST")
                             val reportsList = doc.get("reports") as? List<Map<String, Any>>
@@ -203,11 +209,11 @@ class StudentRepository(
                         }
                     }
                     .addOnFailureListener { e ->
-                        Log.e("StudentRepository", "Failed to pull MDM reports from Firestore: ${e.message}")
+                        Log.e("StudentRepository", "Failed to pull MDM reports from Firestore for $schoolId: ${e.message}", e)
                     }
 
             } catch (e: Exception) {
-                Log.e("StudentRepository", "syncFromFirestore exception: ${e.message}")
+                Log.e("StudentRepository", "syncFromFirestore exception: ${e.message}", e)
             }
         }
     }
