@@ -1,5 +1,7 @@
 ﻿package com.brijbymgt.data.repository
 
+import android.content.Context
+import android.util.Log
 import com.brijbymgt.data.dao.BankDetailsDao
 import com.brijbymgt.data.dao.DocumentDao
 import com.brijbymgt.data.dao.HealthDetailsDao
@@ -15,6 +17,9 @@ import com.brijbymgt.data.entity.StudentEntity
 import com.brijbymgt.data.model.CategoryStat
 import com.brijbymgt.data.model.DashboardStats
 import com.brijbymgt.data.model.StudentWithDetails
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -26,7 +31,8 @@ class StudentRepository(
     private val heightWeightHistoryDao: HeightWeightHistoryDao,
     private val bankDetailsDao: BankDetailsDao,
     private val mdmReportDao: MdmReportDao,
-    private val documentDao: DocumentDao? = null
+    private val documentDao: DocumentDao? = null,
+    private val context: Context? = null
 ) {
 
     val allActiveStudents: Flow<List<StudentWithDetails>> = studentDao.getAllActiveStudentsWithDetails()
@@ -34,6 +40,21 @@ class StudentRepository(
     val cl0AndPassStudents: Flow<List<StudentWithDetails>> = studentDao.getCl0AndPassStudents()
     val trashStudents: Flow<List<StudentWithDetails>> = studentDao.getTrashStudents()
     val mdmReports: Flow<List<MdmReportEntity>> = mdmReportDao.getAllMdmReports()
+
+    private fun getSchoolId(): String {
+        val authUser = FirebaseAuth.getInstance().currentUser
+        if (authUser != null && !authUser.uid.isBlank()) {
+            return authUser.uid
+        }
+        if (context != null) {
+            val prefs = context.getSharedPreferences("auth_prefs", Context.MODE_PRIVATE)
+            val email = prefs.getString("user_email", null)
+            if (!email.isNullOrBlank()) {
+                return email.lowercase().trim().replace(".", "_")
+            }
+        }
+        return "default_school"
+    }
 
     fun getStudentsByClass(studentClass: String): Flow<List<StudentWithDetails>> {
         return studentDao.getActiveStudentsByClass(studentClass)
@@ -52,8 +73,8 @@ class StudentRepository(
         bankDetails: BankDetailsEntity?,
         documents: List<DocumentEntity> = emptyList()
     ): Long {
-        return withContext(Dispatchers.IO) {
-            val studentId = if (student.id > 0) {
+        val studentId = withContext(Dispatchers.IO) {
+            val sId = if (student.id > 0) {
                 studentDao.updateStudent(student)
                 student.id
             } else {
@@ -62,36 +83,98 @@ class StudentRepository(
 
             // Health details
             if (healthDetails != null && healthDetails.hasHealthDetails) {
-                healthDetailsDao.insertHealthDetails(healthDetails.copy(studentId = studentId))
+                healthDetailsDao.insertHealthDetails(healthDetails.copy(studentId = sId))
             } else {
-                healthDetailsDao.deleteHealthDetailsByStudentId(studentId)
+                healthDetailsDao.deleteHealthDetailsByStudentId(sId)
             }
 
             // Height/Weight history
-            heightWeightHistoryDao.deleteHistoryByStudentId(studentId)
+            heightWeightHistoryDao.deleteHistoryByStudentId(sId)
             if (healthDetails != null && healthDetails.hasHealthDetails && heightWeightHistory.isNotEmpty()) {
-                val updatedHistory = heightWeightHistory.map { it.copy(studentId = studentId) }
+                val updatedHistory = heightWeightHistory.map { it.copy(studentId = sId) }
                 heightWeightHistoryDao.insertHeightWeightHistory(updatedHistory)
             }
 
             // Bank details
             if (bankDetails != null && bankDetails.hasBankDetails) {
-                bankDetailsDao.insertBankDetails(bankDetails.copy(studentId = studentId))
+                bankDetailsDao.insertBankDetails(bankDetails.copy(studentId = sId))
             } else {
-                bankDetailsDao.deleteBankDetailsByStudentId(studentId)
+                bankDetailsDao.deleteBankDetailsByStudentId(sId)
             }
 
             // Documents
             if (documentDao != null) {
-                documentDao.deleteAllDocumentsForStudent(studentId)
+                documentDao.deleteAllDocumentsForStudent(sId)
                 if (documents.isNotEmpty()) {
-                    val updatedDocs = documents.map { it.copy(studentId = studentId) }
+                    val updatedDocs = documents.map { it.copy(studentId = sId) }
                     documentDao.insertDocuments(updatedDocs)
                 }
             }
 
-            studentId
+            sId
         }
+
+        // Automatic background sync to Firestore (schools/{uid}/students/{studentId})
+        withContext(Dispatchers.IO) {
+            try {
+                val schoolId = getSchoolId()
+                val firestore = FirebaseFirestore.getInstance()
+                val studentMap = hashMapOf<String, Any>(
+                    "id" to studentId,
+                    "srNumber" to student.srNumber,
+                    "uniqueId" to student.uniqueId,
+                    "studentName" to student.studentName,
+                    "fatherName" to student.fatherName,
+                    "motherName" to student.motherName,
+                    "studentClass" to student.studentClass,
+                    "gender" to student.gender,
+                    "caste" to student.caste,
+                    "dob" to student.dob,
+                    "mobileNo" to student.mobileNo,
+                    "studentAdhar" to student.studentAdhar,
+                    "aaparId" to student.aaparId,
+                    "dbt" to student.dbt,
+                    "address" to student.address,
+                    "isDeleted" to student.isDeleted,
+                    "healthDetails" to (healthDetails?.let {
+                        hashMapOf(
+                            "hasHealthDetails" to it.hasHealthDetails,
+                            "bloodGroup" to it.bloodGroup,
+                            "height" to it.height,
+                            "weight" to it.weight
+                        )
+                    } ?: mapOf()),
+                    "bankDetails" to (bankDetails?.let {
+                        hashMapOf(
+                            "hasBankDetails" to it.hasBankDetails,
+                            "acNo" to it.acNo,
+                            "ifscCode" to it.ifscCode,
+                            "branchName" to it.branchName,
+                            "acHolderName" to it.acHolderName
+                        )
+                    } ?: mapOf()),
+                    "heightWeightHistory" to heightWeightHistory,
+                    "documents" to documents,
+                    "updatedAt" to System.currentTimeMillis()
+                )
+
+                firestore.collection("schools")
+                    .document(schoolId)
+                    .collection("students")
+                    .document(studentId.toString())
+                    .set(studentMap, SetOptions.merge())
+                    .addOnSuccessListener {
+                        Log.d("StudentRepository", "Firestore sync SUCCESS for student $studentId")
+                    }
+                    .addOnFailureListener { e ->
+                        Log.e("StudentRepository", "Firestore sync FAILED for student $studentId: ${e.message}")
+                    }
+            } catch (e: Exception) {
+                Log.e("StudentRepository", "Firestore sync Exception: ${e.message}")
+            }
+        }
+
+        return studentId
     }
 
     suspend fun moveToTrash(id: Long) {
@@ -121,6 +204,32 @@ class StudentRepository(
     suspend fun saveMdmReports(reports: List<MdmReportEntity>) {
         withContext(Dispatchers.IO) {
             mdmReportDao.insertOrUpdateMdmReports(reports)
+        }
+
+        // Automatic background sync to Firestore (schools/{uid}/mdm_reports/all_reports)
+        withContext(Dispatchers.IO) {
+            try {
+                val schoolId = getSchoolId()
+                val firestore = FirebaseFirestore.getInstance()
+                val reportsMap = hashMapOf<String, Any>(
+                    "reports" to reports,
+                    "updatedAt" to System.currentTimeMillis()
+                )
+
+                firestore.collection("schools")
+                    .document(schoolId)
+                    .collection("mdm_reports")
+                    .document("all_reports")
+                    .set(reportsMap, SetOptions.merge())
+                    .addOnSuccessListener {
+                        Log.d("StudentRepository", "Firestore sync SUCCESS for MDM reports")
+                    }
+                    .addOnFailureListener { e ->
+                        Log.e("StudentRepository", "Firestore sync FAILED for MDM reports: ${e.message}")
+                    }
+            } catch (e: Exception) {
+                Log.e("StudentRepository", "Firestore sync Exception for MDM reports: ${e.message}")
+            }
         }
     }
 
@@ -216,7 +325,7 @@ class StudentRepository(
         var scMale = 0
         var scFemale = 0
 
-        var stTotal = 0
+        val stTotal = 0
         var stMale = 0
         var stFemale = 0
 
@@ -252,7 +361,7 @@ class StudentRepository(
                     if (isMale) scMale++ else scFemale++
                 }
                 "ST" -> {
-                    stTotal++
+                    // stTotal++ handled or can be incremented if needed
                     if (isMale) stMale++ else stFemale++
                 }
                 "MINORITY" -> {
@@ -269,7 +378,7 @@ class StudentRepository(
             genStats = CategoryStat("GEN", genTotal, genMale, genFemale),
             obcStats = CategoryStat("OBC", obcTotal, obcMale, obcFemale),
             scStats = CategoryStat("SC", scTotal, scMale, scFemale),
-            stStats = CategoryStat("ST", stTotal, stMale, stFemale),
+            stStats = CategoryStat("ST", stTotal + stMale + stFemale, stMale, stFemale),
             minorityStats = CategoryStat("MINORITY", minorityTotal, minorityMale, minorityFemale),
             aadharCount = aadharCount,
             aaparCount = aaparCount,
@@ -279,4 +388,3 @@ class StudentRepository(
         )
     }
 }
-
