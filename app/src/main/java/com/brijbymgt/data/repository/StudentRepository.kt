@@ -20,9 +20,11 @@ import com.brijbymgt.data.model.StudentWithDetails
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class StudentRepository(
@@ -41,6 +43,12 @@ class StudentRepository(
     val trashStudents: Flow<List<StudentWithDetails>> = studentDao.getTrashStudents()
     val mdmReports: Flow<List<MdmReportEntity>> = mdmReportDao.getAllMdmReports()
 
+    init {
+        CoroutineScope(Dispatchers.IO).launch {
+            syncFromFirestore()
+        }
+    }
+
     private fun getSchoolId(): String {
         val authUser = FirebaseAuth.getInstance().currentUser
         if (authUser != null && !authUser.uid.isBlank()) {
@@ -54,6 +62,131 @@ class StudentRepository(
             }
         }
         return "default_school"
+    }
+
+    suspend fun syncFromFirestore() {
+        withContext(Dispatchers.IO) {
+            try {
+                val schoolId = getSchoolId()
+                if (schoolId == "default_school") return@withContext
+                val firestore = FirebaseFirestore.getInstance()
+
+                // 1. Pull Students from Firestore
+                firestore.collection("schools")
+                    .document(schoolId)
+                    .collection("students")
+                    .get()
+                    .addOnSuccessListener { snapshot ->
+                        CoroutineScope(Dispatchers.IO).launch {
+                            for (doc in snapshot.documents) {
+                                try {
+                                    val data = doc.data ?: continue
+                                    val id = (data["id"] as? Number)?.toLong() ?: doc.id.toLongOrNull() ?: 0L
+                                    if (id == 0L) continue
+
+                                    val student = StudentEntity(
+                                        id = id,
+                                        srNumber = data["srNumber"] as? String ?: "",
+                                        uniqueId = data["uniqueId"] as? String ?: "",
+                                        studentName = data["studentName"] as? String ?: "",
+                                        fatherName = data["fatherName"] as? String ?: "",
+                                        motherName = data["motherName"] as? String ?: "",
+                                        studentClass = data["studentClass"] as? String ?: "Class 1",
+                                        gender = data["gender"] as? String ?: "Male",
+                                        caste = data["caste"] as? String ?: "GEN",
+                                        dob = data["dob"] as? String ?: "",
+                                        mobileNo = data["mobileNo"] as? String ?: "",
+                                        studentAdhar = data["studentAdhar"] as? String ?: "",
+                                        aaparId = data["aaparId"] as? String ?: "",
+                                        dbt = data["dbt"] as? String ?: "No",
+                                        address = data["address"] as? String ?: "",
+                                        isDeleted = data["isDeleted"] as? Boolean ?: false
+                                    )
+
+                                    val existing = studentDao.getStudentWithDetailsById(id)
+                                    if (existing == null) {
+                                        studentDao.insertStudent(student)
+                                    } else {
+                                        studentDao.updateStudent(student)
+                                    }
+
+                                    @Suppress("UNCHECKED_CAST")
+                                    val healthMap = data["healthDetails"] as? Map<String, Any>
+                                    if (healthMap != null && (healthMap["hasHealthDetails"] as? Boolean == true)) {
+                                        val healthEntity = HealthDetailsEntity(
+                                            studentId = id,
+                                            hasHealthDetails = true,
+                                            bloodGroup = healthMap["bloodGroup"] as? String ?: "",
+                                            height = healthMap["height"] as? String ?: "",
+                                            weight = healthMap["weight"] as? String ?: ""
+                                        )
+                                        healthDetailsDao.insertHealthDetails(healthEntity)
+                                    }
+
+                                    @Suppress("UNCHECKED_CAST")
+                                    val bankMap = data["bankDetails"] as? Map<String, Any>
+                                    if (bankMap != null && (bankMap["hasBankDetails"] as? Boolean == true)) {
+                                        val bankEntity = BankDetailsEntity(
+                                            studentId = id,
+                                            hasBankDetails = true,
+                                            acNo = bankMap["acNo"] as? String ?: "",
+                                            ifscCode = bankMap["ifscCode"] as? String ?: "",
+                                            branchName = bankMap["branchName"] as? String ?: "",
+                                            acHolderName = bankMap["acHolderName"] as? String ?: ""
+                                        )
+                                        bankDetailsDao.insertBankDetails(bankEntity)
+                                    }
+
+                                    Log.d("StudentRepository", "Pulled student $id from Firestore successfully")
+                                } catch (e: Exception) {
+                                    Log.e("StudentRepository", "Error parsing pulled student: ${e.message}")
+                                }
+                            }
+                        }
+                    }
+                    .addOnFailureListener { e ->
+                        Log.e("StudentRepository", "Failed to pull students from Firestore: ${e.message}")
+                    }
+
+                // 2. Pull MDM Reports from Firestore
+                firestore.collection("schools")
+                    .document(schoolId)
+                    .collection("mdm_reports")
+                    .document("all_reports")
+                    .get()
+                    .addOnSuccessListener { doc ->
+                        if (doc.exists()) {
+                            @Suppress("UNCHECKED_CAST")
+                            val reportsList = doc.get("reports") as? List<Map<String, Any>>
+                            if (reportsList != null) {
+                                val reports = reportsList.mapNotNull { rMap ->
+                                    try {
+                                        MdmReportEntity(
+                                            studentClass = rMap["studentClass"] as? String ?: "",
+                                            mdmMale = (rMap["mdmMale"] as? Number)?.toInt() ?: 0,
+                                            mdmFemale = (rMap["mdmFemale"] as? Number)?.toInt() ?: 0
+                                        )
+                                    } catch (e: Exception) {
+                                        null
+                                    }
+                                }
+                                if (reports.isNotEmpty()) {
+                                    CoroutineScope(Dispatchers.IO).launch {
+                                        mdmReportDao.insertOrUpdateMdmReports(reports)
+                                        Log.d("StudentRepository", "Pulled ${reports.size} MDM reports from Firestore")
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .addOnFailureListener { e ->
+                        Log.e("StudentRepository", "Failed to pull MDM reports from Firestore: ${e.message}")
+                    }
+
+            } catch (e: Exception) {
+                Log.e("StudentRepository", "syncFromFirestore exception: ${e.message}")
+            }
+        }
     }
 
     fun getStudentsByClass(studentClass: String): Flow<List<StudentWithDetails>> {
@@ -212,7 +345,13 @@ class StudentRepository(
                 val schoolId = getSchoolId()
                 val firestore = FirebaseFirestore.getInstance()
                 val reportsMap = hashMapOf<String, Any>(
-                    "reports" to reports,
+                    "reports" to reports.map { r ->
+                        hashMapOf(
+                            "studentClass" to r.studentClass,
+                            "mdmMale" to r.mdmMale,
+                            "mdmFemale" to r.mdmFemale
+                        )
+                    },
                     "updatedAt" to System.currentTimeMillis()
                 )
 
