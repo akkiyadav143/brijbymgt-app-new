@@ -254,10 +254,6 @@ class AuthRepository(context: Context) {
 
         Log.i(TAG, "sendOtpApi initiated: email=$cleanEmail, name=$userName, mobile=$userMobile, uid=$userUid, isRegister=$isRegister")
 
-        if (isRegister) {
-            syncUserToFirebase(cleanEmail, userName, userMobile, userUid)
-        }
-
         val endpoints = if (isRegister) {
             listOf(
                 "https://brijbymgt.com/api/register",
