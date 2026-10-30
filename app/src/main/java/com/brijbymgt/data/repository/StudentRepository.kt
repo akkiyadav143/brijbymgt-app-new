@@ -112,6 +112,9 @@ class StudentRepository(
                                     val id = (data["id"] as? Number)?.toLong() ?: doc.id.toLongOrNull() ?: 0L
                                     if (id == 0L) continue
 
+                                    val isDeleted = data["isDeleted"] as? Boolean ?: false
+                                    val deletedAt = (data["deletedAt"] as? Number)?.toLong()
+
                                     val student = StudentEntity(
                                         id = id,
                                         srNumber = data["srNumber"] as? String ?: "",
@@ -128,7 +131,8 @@ class StudentRepository(
                                         aaparId = data["aaparId"] as? String ?: "",
                                         dbt = data["dbt"] as? String ?: "No",
                                         address = data["address"] as? String ?: "",
-                                        isDeleted = data["isDeleted"] as? Boolean ?: false
+                                        isDeleted = isDeleted,
+                                        deletedAt = deletedAt
                                     )
 
                                     val existing = studentDao.getStudentWithDetailsById(id)
@@ -165,7 +169,7 @@ class StudentRepository(
                                         bankDetailsDao.insertBankDetails(bankEntity)
                                     }
 
-                                    Log.d("StudentRepository", "Pulled student $id from Firestore successfully")
+                                    Log.d("StudentRepository", "Pulled student $id (isDeleted=$isDeleted) from Firestore successfully")
                                 } catch (e: Exception) {
                                     Log.e("StudentRepository", "Error parsing pulled student: ${e.message}", e)
                                 }
@@ -298,6 +302,7 @@ class StudentRepository(
                     "dbt" to student.dbt,
                     "address" to student.address,
                     "isDeleted" to student.isDeleted,
+                    "deletedAt" to (student.deletedAt ?: 0L),
                     "healthDetails" to (healthDetails?.let {
                         hashMapOf(
                             "hasHealthDetails" to it.hasHealthDetails,
@@ -341,19 +346,59 @@ class StudentRepository(
 
     suspend fun moveToTrash(id: Long) {
         withContext(Dispatchers.IO) {
-            studentDao.softDeleteStudent(id, System.currentTimeMillis())
+            val timestamp = System.currentTimeMillis()
+            studentDao.softDeleteStudent(id, timestamp)
+            try {
+                val schoolId = getSchoolId()
+                if (schoolId != "default_school") {
+                    FirebaseFirestore.getInstance()
+                        .collection("schools")
+                        .document(schoolId)
+                        .collection("students")
+                        .document(id.toString())
+                        .update(mapOf("isDeleted" to true, "deletedAt" to timestamp))
+                }
+            } catch (e: Exception) {
+                Log.e("StudentRepository", "moveToTrash Firestore sync error: ${e.message}")
+            }
         }
     }
 
     suspend fun restoreFromTrash(id: Long) {
         withContext(Dispatchers.IO) {
             studentDao.restoreStudent(id)
+            try {
+                val schoolId = getSchoolId()
+                if (schoolId != "default_school") {
+                    FirebaseFirestore.getInstance()
+                        .collection("schools")
+                        .document(schoolId)
+                        .collection("students")
+                        .document(id.toString())
+                        .update(mapOf("isDeleted" to false, "deletedAt" to null))
+                }
+            } catch (e: Exception) {
+                Log.e("StudentRepository", "restoreFromTrash Firestore sync error: ${e.message}")
+            }
         }
     }
 
     suspend fun deletePermanently(id: Long) {
         withContext(Dispatchers.IO) {
             studentDao.deleteStudentByIdPermanently(id)
+            try {
+                val schoolId = getSchoolId()
+                if (schoolId != "default_school") {
+                    FirebaseFirestore.getInstance()
+                        .collection("schools")
+                        .document(schoolId)
+                        .collection("students")
+                        .document(id.toString())
+                        .delete()
+                }
+            } catch (e: Exception) {
+                Log.e("StudentRepository", "deletePermanently Firestore error: ${e.message}")
+            }
         }
     }
 
