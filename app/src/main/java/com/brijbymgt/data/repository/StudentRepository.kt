@@ -404,7 +404,23 @@ class StudentRepository(
 
     suspend fun emptyTrash() {
         withContext(Dispatchers.IO) {
+            val trashList = studentDao.getTrashStudentsSync()
             studentDao.emptyTrash()
+            try {
+                val schoolId = getSchoolId()
+                if (schoolId != "default_school") {
+                    val firestore = FirebaseFirestore.getInstance()
+                    for (student in trashList) {
+                        firestore.collection("schools")
+                            .document(schoolId)
+                            .collection("students")
+                            .document(student.id.toString())
+                            .delete()
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e("StudentRepository", "emptyTrash Firestore error: ${e.message}")
+            }
         }
     }
 

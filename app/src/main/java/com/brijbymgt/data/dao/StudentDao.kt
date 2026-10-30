@@ -46,6 +46,9 @@ interface StudentDao {
     @Query("SELECT * FROM students WHERE isDeleted = 1 ORDER BY deletedAt DESC")
     fun getTrashStudents(): Flow<List<StudentWithDetails>>
 
+    @Query("SELECT * FROM students WHERE isDeleted = 1")
+    fun getTrashStudentsSync(): List<StudentEntity>
+
     @Transaction
     @Query("SELECT * FROM students WHERE id = :id LIMIT 1")
     fun getStudentWithDetailsById(id: Long): StudentWithDetails?
