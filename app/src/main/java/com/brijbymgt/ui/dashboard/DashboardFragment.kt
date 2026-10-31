@@ -1,5 +1,7 @@
 ﻿package com.brijbymgt.ui.dashboard
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
@@ -14,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -22,6 +25,7 @@ import com.brijbymgt.R
 import com.brijbymgt.SchoolApp
 import com.brijbymgt.data.repository.StudentRepository
 import com.brijbymgt.databinding.FragmentDashboardBinding
+import com.brijbymgt.ui.auth.AuthActivity
 import com.brijbymgt.ui.auth.AuthRepository
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -62,12 +66,34 @@ class DashboardFragment : Fragment() {
         val userEmail = authRepo.getUserEmail() ?: "School Admin"
         binding.tvDashboardTitle.text = userEmail
 
+        binding.ivDashboardLogout.setOnClickListener {
+            showLogoutConfirmationDialog()
+        }
+
         val dateStr = SimpleDateFormat("dd EEEE MMMM yyyy", Locale.getDefault()).format(Date())
         binding.tvDashboardDate.text = dateStr
 
         setupClassFilterButtons()
         setupReportButtons()
         observeStats()
+    }
+
+    private fun showLogoutConfirmationDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Logout")
+            .setMessage("Are you sure you want to logout from your account?")
+            .setPositiveButton("Yes") { _, _ ->
+                val authRepository = AuthRepository(requireContext())
+                authRepository.logout()
+                Toast.makeText(requireContext(), "Logged out successfully", Toast.LENGTH_SHORT).show()
+                val intent = Intent(requireContext(), AuthActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                }
+                startActivity(intent)
+                requireActivity().finish()
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
     }
 
     private fun setupClassFilterButtons() {
