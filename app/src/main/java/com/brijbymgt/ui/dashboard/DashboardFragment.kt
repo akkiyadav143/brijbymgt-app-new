@@ -22,6 +22,7 @@ import com.brijbymgt.R
 import com.brijbymgt.SchoolApp
 import com.brijbymgt.data.repository.StudentRepository
 import com.brijbymgt.databinding.FragmentDashboardBinding
+import com.brijbymgt.ui.auth.AuthRepository
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -56,6 +57,10 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val authRepo = AuthRepository(requireContext())
+        val userEmail = authRepo.getUserEmail() ?: "School Admin"
+        binding.tvDashboardTitle.text = userEmail
 
         val dateStr = SimpleDateFormat("dd EEEE MMMM yyyy", Locale.getDefault()).format(Date())
         binding.tvDashboardDate.text = dateStr
