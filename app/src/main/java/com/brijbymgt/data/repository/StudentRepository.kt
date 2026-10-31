@@ -114,6 +114,9 @@ class StudentRepository(
 
                                     val isDeleted = data["isDeleted"] as? Boolean ?: false
                                     val deletedAt = (data["deletedAt"] as? Number)?.toLong()
+                                    val imagePath = data["imagePath"] as? String
+                                    val fatherImagePath = data["fatherImagePath"] as? String
+                                    val motherImagePath = data["motherImagePath"] as? String
 
                                     val student = StudentEntity(
                                         id = id,
@@ -131,6 +134,9 @@ class StudentRepository(
                                         aaparId = data["aaparId"] as? String ?: "",
                                         dbt = data["dbt"] as? String ?: "No",
                                         address = data["address"] as? String ?: "",
+                                        imagePath = if (!imagePath.isNullOrBlank()) imagePath else null,
+                                        fatherImagePath = if (!fatherImagePath.isNullOrBlank()) fatherImagePath else null,
+                                        motherImagePath = if (!motherImagePath.isNullOrBlank()) motherImagePath else null,
                                         isDeleted = isDeleted,
                                         deletedAt = deletedAt
                                     )
@@ -169,7 +175,7 @@ class StudentRepository(
                                         bankDetailsDao.insertBankDetails(bankEntity)
                                     }
 
-                                    Log.d("StudentRepository", "Pulled student $id (isDeleted=$isDeleted) from Firestore successfully")
+                                    Log.d("StudentRepository", "Pulled student $id (isDeleted=$isDeleted) with 3 photos from Firestore successfully")
                                 } catch (e: Exception) {
                                     Log.e("StudentRepository", "Error parsing pulled student: ${e.message}", e)
                                 }
@@ -301,6 +307,9 @@ class StudentRepository(
                     "aaparId" to student.aaparId,
                     "dbt" to student.dbt,
                     "address" to student.address,
+                    "imagePath" to (student.imagePath ?: ""),
+                    "fatherImagePath" to (student.fatherImagePath ?: ""),
+                    "motherImagePath" to (student.motherImagePath ?: ""),
                     "isDeleted" to student.isDeleted,
                     "deletedAt" to (student.deletedAt ?: 0L),
                     "healthDetails" to (healthDetails?.let {
@@ -331,7 +340,7 @@ class StudentRepository(
                     .document(studentId.toString())
                     .set(studentMap, SetOptions.merge())
                     .addOnSuccessListener {
-                        Log.d("StudentRepository", "Firestore sync SUCCESS for student $studentId")
+                        Log.d("StudentRepository", "Firestore sync SUCCESS for student $studentId with photos")
                     }
                     .addOnFailureListener { e ->
                         Log.e("StudentRepository", "Firestore sync FAILED for student $studentId: ${e.message}")
