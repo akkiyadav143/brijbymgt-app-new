@@ -1,6 +1,7 @@
 ﻿package com.brijbymgt.data.repository
 
 import android.content.Context
+import android.util.Base64
 import android.util.Log
 import com.brijbymgt.SchoolApp
 import com.brijbymgt.data.dao.BankDetailsDao
@@ -27,6 +28,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.File
+import java.io.FileOutputStream
 
 class StudentRepository(
     private val studentDao: StudentDao,
@@ -47,6 +50,35 @@ class StudentRepository(
     init {
         CoroutineScope(Dispatchers.IO).launch {
             syncFromFirestore()
+        }
+    }
+
+    private fun fileToBase64(path: String?): String {
+        if (path.isNullOrBlank()) return ""
+        try {
+            val file = File(path)
+            if (!file.exists()) return ""
+            val bytes = file.readBytes()
+            return Base64.encodeToString(bytes, Base64.NO_WRAP)
+        } catch (e: Exception) {
+            return ""
+        }
+    }
+
+    private fun base64ToFile(base64Str: String?, prefix: String): String? {
+        if (base64Str.isNullOrBlank()) return null
+        try {
+            val bytes = Base64.decode(base64Str, Base64.NO_WRAP)
+            val ctx = context ?: try { SchoolApp.instance } catch (_: Exception) { null } ?: return null
+            val directory = File(ctx.filesDir, "student_images")
+            if (!directory.exists()) {
+                directory.mkdirs()
+            }
+            val file = File(directory, "${prefix}_${System.currentTimeMillis()}_${(0..999).random()}.jpg")
+            FileOutputStream(file).use { it.write(bytes) }
+            return file.absolutePath
+        } catch (e: Exception) {
+            return null
         }
     }
 
@@ -114,9 +146,27 @@ class StudentRepository(
 
                                     val isDeleted = data["isDeleted"] as? Boolean ?: false
                                     val deletedAt = (data["deletedAt"] as? Number)?.toLong()
-                                    val imagePath = data["imagePath"] as? String
-                                    val fatherImagePath = data["fatherImagePath"] as? String
-                                    val motherImagePath = data["motherImagePath"] as? String
+                                    val imageBase64 = data["imageBase64"] as? String
+                                    val fatherImageBase64 = data["fatherImageBase64"] as? String
+                                    val motherImageBase64 = data["motherImageBase64"] as? String
+
+                                    val localImagePath = if (!imageBase64.isNullOrBlank()) {
+                                        base64ToFile(imageBase64, "student")
+                                    } else {
+                                        data["imagePath"] as? String
+                                    }
+
+                                    val localFatherPath = if (!fatherImageBase64.isNullOrBlank()) {
+                                        base64ToFile(fatherImageBase64, "father")
+                                    } else {
+                                        data["fatherImagePath"] as? String
+                                    }
+
+                                    val localMotherPath = if (!motherImageBase64.isNullOrBlank()) {
+                                        base64ToFile(motherImageBase64, "mother")
+                                    } else {
+                                        data["motherImagePath"] as? String
+                                    }
 
                                     val student = StudentEntity(
                                         id = id,
@@ -134,9 +184,9 @@ class StudentRepository(
                                         aaparId = data["aaparId"] as? String ?: "",
                                         dbt = data["dbt"] as? String ?: "No",
                                         address = data["address"] as? String ?: "",
-                                        imagePath = if (!imagePath.isNullOrBlank()) imagePath else null,
-                                        fatherImagePath = if (!fatherImagePath.isNullOrBlank()) fatherImagePath else null,
-                                        motherImagePath = if (!motherImagePath.isNullOrBlank()) motherImagePath else null,
+                                        imagePath = localImagePath,
+                                        fatherImagePath = localFatherPath,
+                                        motherImagePath = localMotherPath,
                                         isDeleted = isDeleted,
                                         deletedAt = deletedAt
                                     )
@@ -175,7 +225,7 @@ class StudentRepository(
                                         bankDetailsDao.insertBankDetails(bankEntity)
                                     }
 
-                                    Log.d("StudentRepository", "Pulled student $id (isDeleted=$isDeleted) with 3 photos from Firestore successfully")
+                                    Log.d("StudentRepository", "Pulled student $id (isDeleted=$isDeleted) with 3 photos re-created from Base64 successfully")
                                 } catch (e: Exception) {
                                     Log.e("StudentRepository", "Error parsing pulled student: ${e.message}", e)
                                 }
@@ -308,8 +358,11 @@ class StudentRepository(
                     "dbt" to student.dbt,
                     "address" to student.address,
                     "imagePath" to (student.imagePath ?: ""),
+                    "imageBase64" to fileToBase64(student.imagePath),
                     "fatherImagePath" to (student.fatherImagePath ?: ""),
+                    "fatherImageBase64" to fileToBase64(student.fatherImagePath),
                     "motherImagePath" to (student.motherImagePath ?: ""),
+                    "motherImageBase64" to fileToBase64(student.motherImagePath),
                     "isDeleted" to student.isDeleted,
                     "deletedAt" to (student.deletedAt ?: 0L),
                     "healthDetails" to (healthDetails?.let {
@@ -340,7 +393,7 @@ class StudentRepository(
                     .document(studentId.toString())
                     .set(studentMap, SetOptions.merge())
                     .addOnSuccessListener {
-                        Log.d("StudentRepository", "Firestore sync SUCCESS for student $studentId with photos")
+                        Log.d("StudentRepository", "Firestore sync SUCCESS for student $studentId with 3 photos as Base64")
                     }
                     .addOnFailureListener { e ->
                         Log.e("StudentRepository", "Firestore sync FAILED for student $studentId: ${e.message}")
