@@ -1,6 +1,7 @@
 ﻿package com.brijbymgt.data.repository
 
 import android.content.Context
+import android.net.Uri
 import android.util.Base64
 import android.util.Log
 import com.brijbymgt.SchoolApp
@@ -30,6 +31,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
+import java.io.InputStream
 
 class StudentRepository(
     private val studentDao: StudentDao,
@@ -53,16 +55,26 @@ class StudentRepository(
         }
     }
 
-    private fun fileToBase64(path: String?): String {
-        if (path.isNullOrBlank()) return ""
+    private fun uriOrPathToBase64(pathOrUri: String?): String {
+        if (pathOrUri.isNullOrBlank()) return ""
         try {
-            val file = File(path)
-            if (!file.exists()) return ""
-            val bytes = file.readBytes()
-            return Base64.encodeToString(bytes, Base64.NO_WRAP)
+            val ctx = context ?: try { SchoolApp.instance } catch (_: Exception) { null } ?: return ""
+            val inputStream: InputStream? = if (pathOrUri.startsWith("content://") || pathOrUri.startsWith("file://")) {
+                ctx.contentResolver.openInputStream(Uri.parse(pathOrUri))
+            } else {
+                val file = File(pathOrUri)
+                if (file.exists()) file.inputStream() else null
+            }
+
+            if (inputStream != null) {
+                val bytes = inputStream.readBytes()
+                inputStream.close()
+                return Base64.encodeToString(bytes, Base64.NO_WRAP)
+            }
         } catch (e: Exception) {
-            return ""
+            Log.e("StudentRepository", "Error converting image to Base64: ${e.message}", e)
         }
+        return ""
     }
 
     private fun base64ToFile(base64Str: String?, prefix: String): String? {
@@ -78,6 +90,7 @@ class StudentRepository(
             FileOutputStream(file).use { it.write(bytes) }
             return file.absolutePath
         } catch (e: Exception) {
+            Log.e("StudentRepository", "Error decoding Base64 to file: ${e.message}", e)
             return null
         }
     }
@@ -358,11 +371,11 @@ class StudentRepository(
                     "dbt" to student.dbt,
                     "address" to student.address,
                     "imagePath" to (student.imagePath ?: ""),
-                    "imageBase64" to fileToBase64(student.imagePath),
+                    "imageBase64" to uriOrPathToBase64(student.imagePath),
                     "fatherImagePath" to (student.fatherImagePath ?: ""),
-                    "fatherImageBase64" to fileToBase64(student.fatherImagePath),
+                    "fatherImageBase64" to uriOrPathToBase64(student.fatherImagePath),
                     "motherImagePath" to (student.motherImagePath ?: ""),
-                    "motherImageBase64" to fileToBase64(student.motherImagePath),
+                    "motherImageBase64" to uriOrPathToBase64(student.motherImagePath),
                     "isDeleted" to student.isDeleted,
                     "deletedAt" to (student.deletedAt ?: 0L),
                     "healthDetails" to (healthDetails?.let {
