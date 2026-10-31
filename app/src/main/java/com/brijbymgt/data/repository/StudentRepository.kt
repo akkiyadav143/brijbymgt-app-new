@@ -88,6 +88,7 @@ class StudentRepository(
             }
             val file = File(directory, "${prefix}_${System.currentTimeMillis()}_${(0..999).random()}.jpg")
             FileOutputStream(file).use { it.write(bytes) }
+            Log.d("StudentRepository", "Successfully decoded Base64 to file: ${file.absolutePath}")
             return file.absolutePath
         } catch (e: Exception) {
             Log.e("StudentRepository", "Error decoding Base64 to file: ${e.message}", e)
@@ -163,22 +164,28 @@ class StudentRepository(
                                     val fatherImageBase64 = data["fatherImageBase64"] as? String
                                     val motherImageBase64 = data["motherImageBase64"] as? String
 
-                                    val localImagePath = if (!imageBase64.isNullOrBlank()) {
-                                        base64ToFile(imageBase64, "student")
-                                    } else {
-                                        data["imagePath"] as? String
+                                    val localImagePath = when {
+                                        !imageBase64.isNullOrBlank() -> base64ToFile(imageBase64, "student")
+                                        else -> {
+                                            val oldPath = data["imagePath"] as? String
+                                            if (!oldPath.isNullOrBlank() && File(oldPath).exists()) oldPath else null
+                                        }
                                     }
 
-                                    val localFatherPath = if (!fatherImageBase64.isNullOrBlank()) {
-                                        base64ToFile(fatherImageBase64, "father")
-                                    } else {
-                                        data["fatherImagePath"] as? String
+                                    val localFatherPath = when {
+                                        !fatherImageBase64.isNullOrBlank() -> base64ToFile(fatherImageBase64, "father")
+                                        else -> {
+                                            val oldPath = data["fatherImagePath"] as? String
+                                            if (!oldPath.isNullOrBlank() && File(oldPath).exists()) oldPath else null
+                                        }
                                     }
 
-                                    val localMotherPath = if (!motherImageBase64.isNullOrBlank()) {
-                                        base64ToFile(motherImageBase64, "mother")
-                                    } else {
-                                        data["motherImagePath"] as? String
+                                    val localMotherPath = when {
+                                        !motherImageBase64.isNullOrBlank() -> base64ToFile(motherImageBase64, "mother")
+                                        else -> {
+                                            val oldPath = data["motherImagePath"] as? String
+                                            if (!oldPath.isNullOrBlank() && File(oldPath).exists()) oldPath else null
+                                        }
                                     }
 
                                     val student = StudentEntity(
@@ -238,7 +245,7 @@ class StudentRepository(
                                         bankDetailsDao.insertBankDetails(bankEntity)
                                     }
 
-                                    Log.d("StudentRepository", "Pulled student $id (isDeleted=$isDeleted) with 3 photos re-created from Base64 successfully")
+                                    Log.d("StudentRepository", "Pulled student $id (isDeleted=$isDeleted) with photos decoded successfully. imgPath=$localImagePath")
                                 } catch (e: Exception) {
                                     Log.e("StudentRepository", "Error parsing pulled student: ${e.message}", e)
                                 }
