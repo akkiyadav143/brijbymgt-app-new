@@ -65,6 +65,7 @@ class AddStudentFragment : Fragment() {
     private var selectedMotherImagePath: String? = null
     private var activePhotoPicker: String = "student"
     private var editingStudentId: Long = -1L
+    private var isNavigatingToListAfterSave = false
 
     private val heightWeightList = mutableListOf<HeightWeightHistoryEntity>()
     private lateinit var hwAdapter: HeightWeightAdapter
@@ -278,14 +279,25 @@ class AddStudentFragment : Fragment() {
         renderDocumentsUI()
     }
 
+    private fun getDocumentMaxLimit(docType: String): Int {
+        return if (docType == "Other Document") 5 else 2
+    }
+
     private fun showDocumentSourcePicker(docType: String, isReplacement: Boolean, docId: Long) {
+        val docsForType = studentDocuments[docType] ?: mutableListOf()
+        val maxLimit = getDocumentMaxLimit(docType)
+        if (!isReplacement && docsForType.size >= maxLimit) {
+            Toast.makeText(requireContext(), "Maximum $maxLimit documents allowed for $docType", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         activeAttachingDocType = docType
         isDocumentReplacement = isReplacement
         replacementDocumentId = docId
 
         val options = arrayOf("Take Photo", "Choose Image", "Choose PDF / File")
         AlertDialog.Builder(requireContext())
-            .setTitle("Attach $docType")
+            .setTitle("Attach $docType (${docsForType.size}/$maxLimit)")
             .setItems(options) { _, which ->
                 when (which) {
                     0 -> launchCameraForDocument()
@@ -311,6 +323,12 @@ class AddStudentFragment : Fragment() {
 
     private fun handleSavedDocument(docType: String, newDoc: DocumentEntity, isReplacement: Boolean, replaceId: Long) {
         val list = studentDocuments.getOrPut(docType) { mutableListOf() }
+        val maxLimit = getDocumentMaxLimit(docType)
+        if (!isReplacement && list.size >= maxLimit) {
+            Toast.makeText(requireContext(), "Maximum $maxLimit documents allowed for $docType", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         if (isReplacement && replaceId > 0) {
             val index = list.indexOfFirst { it.id == replaceId }
             if (index != -1) {
@@ -336,6 +354,8 @@ class AddStudentFragment : Fragment() {
         for (docType in DocumentStorageHelper.SUPPORTED_DOCUMENT_TYPES) {
             val docsForType = studentDocuments[docType] ?: mutableListOf()
             val isAttached = docsForType.isNotEmpty()
+            val maxLimit = getDocumentMaxLimit(docType)
+            val isMaxReached = docsForType.size >= maxLimit
 
             val cardLayout = LinearLayout(context).apply {
                 orientation = LinearLayout.VERTICAL
@@ -374,7 +394,7 @@ class AddStudentFragment : Fragment() {
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
                 ).apply { setMargins(8, 0, 8, 0) }
-                text = if (isAttached) "🟢 Attached" else "⚪ Not Attached"
+                text = if (isAttached) "🟢 Attached (${docsForType.size}/$maxLimit)" else "⚪ Not Attached (0/$maxLimit)"
                 textSize = 11f
                 setTextColor(android.graphics.Color.parseColor(if (isAttached) "#2E7D32" else "#757575"))
             }
@@ -385,11 +405,16 @@ class AddStudentFragment : Fragment() {
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     (36 * density).toInt()
                 )
-                text = if (isAttached) "+ Add More" else "+ Attach Document"
+                text = if (isMaxReached) "Max ($maxLimit)" else if (isAttached) "+ Add More" else "+ Attach Document"
                 textSize = 11f
+                isEnabled = !isMaxReached
                 setPadding(12, 0, 12, 0)
                 setOnClickListener {
-                    showDocumentSourcePicker(docType, false, -1L)
+                    if (isMaxReached) {
+                        Toast.makeText(context, "Maximum $maxLimit documents allowed for $docType", Toast.LENGTH_SHORT).show()
+                    } else {
+                        showDocumentSourcePicker(docType, false, -1L)
+                    }
                 }
             }
             headerRow.addView(btnAttach)
@@ -721,6 +746,7 @@ class AddStudentFragment : Fragment() {
         }
 
         dialogBinding.btnPreviewClose.setOnClickListener {
+            isNavigatingToListAfterSave = true
             viewModel.saveStudent(
                 item.student,
                 item.healthDetails,
@@ -750,9 +776,13 @@ class AddStudentFragment : Fragment() {
                 val bundle = Bundle().apply {
                     putLong("studentId", item.student.id)
                 }
-                findNavController().navigate(R.id.nav_student_list, bundle)
+                findNavController().navigate(R.id.action_add_student_to_student_list, bundle)
             } catch (e: Exception) {
-                e.printStackTrace()
+                try {
+                    findNavController().navigate(R.id.nav_student_list)
+                } catch (ex: Exception) {
+                    ex.printStackTrace()
+                }
             }
         }
 
@@ -782,8 +812,25 @@ class AddStudentFragment : Fragment() {
             viewModel.savedStudentWithDetails.collect { studentWithDetails ->
                 studentWithDetails?.let { item ->
                     Toast.makeText(requireContext(), "Student Record Saved Successfully!", Toast.LENGTH_SHORT).show()
-                    showSavedStudentPreviewDialog(item)
-                    clearForm()
+                    if (isNavigatingToListAfterSave) {
+                        isNavigatingToListAfterSave = false
+                        clearForm()
+                        val bundle = Bundle().apply {
+                            putLong("studentId", item.student.id)
+                        }
+                        try {
+                            findNavController().navigate(R.id.action_add_student_to_student_list, bundle)
+                        } catch (e: Exception) {
+                            try {
+                                findNavController().navigate(R.id.nav_student_list, bundle)
+                            } catch (ex: Exception) {
+                                ex.printStackTrace()
+                            }
+                        }
+                    } else {
+                        showSavedStudentPreviewDialog(item)
+                        clearForm()
+                    }
                 }
             }
         }

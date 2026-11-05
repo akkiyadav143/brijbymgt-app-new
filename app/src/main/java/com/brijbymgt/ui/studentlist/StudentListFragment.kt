@@ -267,8 +267,6 @@ class StudentListFragment : Fragment() {
                         if (index != -1) {
                             hasScrolledToTarget = true
                             binding.rvStudentList.scrollToPosition(index)
-                            val item = list[index]
-                            showPreviewDialog(item)
                         } else {
                             binding.rvStudentList.scrollToPosition(0)
                         }
@@ -351,7 +349,10 @@ class StudentListFragment : Fragment() {
             confirmDelete(item)
         }
 
-        dialogBinding.btnPreviewClose.setOnClickListener { dialog.dismiss() }
+        dialogBinding.btnPreviewClose.setOnClickListener {
+            dialog.dismiss()
+            findNavController().navigate(R.id.nav_student_list)
+        }
         dialog.show()
     }
 

@@ -24,9 +24,20 @@ object ImageStorageHelper {
                 val fileName = "img_${UUID.randomUUID()}.jpg"
                 val file = File(directory, fileName)
 
-                val inputStream: InputStream? = context.contentResolver.openInputStream(uri)
-                val bitmap = BitmapFactory.decodeStream(inputStream)
-                inputStream?.close()
+                // Decode bounds first to downsample and prevent OutOfMemoryError
+                val options = BitmapFactory.Options().apply {
+                    inJustDecodeBounds = true
+                }
+                val inputStream1: InputStream? = context.contentResolver.openInputStream(uri)
+                BitmapFactory.decodeStream(inputStream1, null, options)
+                inputStream1?.close()
+
+                options.inSampleSize = calculateInSampleSize(options, 1024, 1024)
+                options.inJustDecodeBounds = false
+
+                val inputStream2: InputStream? = context.contentResolver.openInputStream(uri)
+                val bitmap = BitmapFactory.decodeStream(inputStream2, null, options)
+                inputStream2?.close()
 
                 if (bitmap != null) {
                     val outputStream = FileOutputStream(file)

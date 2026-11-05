@@ -20,6 +20,9 @@
             android:name="studentId"
             app:argType="long"
             android:defaultValue="-1L" />
+        <action
+            android:id="@+id/action_add_student_to_student_list"
+            app:destination="@id/nav_student_list" />
     </fragment>
 
     <fragment

@@ -1,8 +1,6 @@
-# Keep all app classes
--keep class com.brijbymgt.** { *; }
--keepclassmembers class com.brijbymgt.** { *; }
-
-# Room Database Keep Rules
+# Room Database & Models
+-keep class com.brijbymgt.data.entity.** { *; }
+-keep class com.brijbymgt.data.model.** { *; }
 -keep class * extends androidx.room.RoomDatabase { *; }
 -keepclassmembers class * extends androidx.room.RoomDatabase {
     <init>();
