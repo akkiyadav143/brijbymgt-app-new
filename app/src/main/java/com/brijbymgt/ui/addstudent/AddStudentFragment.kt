@@ -557,15 +557,6 @@ class AddStudentFragment : Fragment() {
             isValid = false
         }
 
-        val ifscStr = binding.etIfscCode.text.toString().trim()
-        if (ifscStr.isNotBlank()) {
-            val ifscRes = ValidationUtils.validateIfsc(ifscStr)
-            if (!ifscRes.isValid) {
-                binding.tilIfscCode.error = ifscRes.errorMessage
-                isValid = false
-            }
-        }
-
         val acNoStr = binding.etAcNo.text.toString().trim()
         if (acNoStr.isNotBlank()) {
             val acRes = ValidationUtils.validateAccountNo(acNoStr)

@@ -495,12 +495,12 @@
                 android:minLines="2" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Rashan Card -->
+        <!-- Ration Card -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilRationCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Rashan Card Number"
+            android:hint="Ration Card Number"
             android:layout_marginBottom="16dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etRationCard"
