@@ -349,9 +349,17 @@ class StudentListFragment : Fragment() {
             confirmDelete(item)
         }
 
+        dialogBinding.btnPreviewClose.text = "📄 View in List"
         dialogBinding.btnPreviewClose.setOnClickListener {
             dialog.dismiss()
-            findNavController().navigate(R.id.nav_student_list)
+            val bundle = Bundle().apply {
+                putLong("studentId", s.id)
+            }
+            try {
+                findNavController().navigate(R.id.nav_student_list, bundle)
+            } catch (_: Exception) {
+                findNavController().navigate(R.id.nav_student_list)
+            }
         }
         dialog.show()
     }
