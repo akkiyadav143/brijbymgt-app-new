@@ -54,6 +54,7 @@ class StudentListFragment : Fragment() {
     private lateinit var adapter: StudentAdapter
     private var currentSearchField = "All"
     private var currentSelectedClass = "All"
+    private var isSortingActionTriggered = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -153,12 +154,12 @@ class StudentListFragment : Fragment() {
     private fun setupOrderAndSortByChips() {
         // Order Chips (Ascending / Descending)
         binding.chipGroupOrder.setOnCheckedStateChangeListener { _, checkedIds ->
+            isSortingActionTriggered = true
             if (checkedIds.contains(binding.chipOrderDesc.id)) {
                 viewModel.setSortOrder("Descending")
             } else {
                 viewModel.setSortOrder("Ascending")
             }
-            binding.rvStudentList.scrollToPosition(0)
         }
 
         // Sort By Chips
@@ -181,10 +182,10 @@ class StudentListFragment : Fragment() {
         )
 
         binding.chipGroupSortBy.setOnCheckedStateChangeListener { _, checkedIds ->
+            isSortingActionTriggered = true
             val selectedId = checkedIds.firstOrNull()
             val sortField = chipMap[selectedId] ?: "None"
             viewModel.setSortByField(sortField)
-            binding.rvStudentList.scrollToPosition(0)
         }
     }
 
@@ -268,6 +269,9 @@ class StudentListFragment : Fragment() {
                             hasScrolledToTarget = true
                             binding.rvStudentList.scrollToPosition(index)
                         }
+                    } else if (isSortingActionTriggered) {
+                        isSortingActionTriggered = false
+                        binding.rvStudentList.scrollToPosition(0)
                     }
                 }
                 val htmlText = "Record Found: <font color='#3FFF00'><b>${list.size}</b></font>"
