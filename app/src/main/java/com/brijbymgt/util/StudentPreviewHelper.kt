@@ -77,6 +77,7 @@ object StudentPreviewHelper {
         }
         binding.tvPreviewMotherName.text = s.motherName.ifBlank { "-" }
         binding.tvPreviewMotherAdhar.text = s.motherAdhar.ifBlank { "-" }
+        binding.tvPreviewParentRationCard.text = s.rationCard.ifBlank { "-" }
 
         // Health Details
         if (h != null && h.hasHealthDetails) {
