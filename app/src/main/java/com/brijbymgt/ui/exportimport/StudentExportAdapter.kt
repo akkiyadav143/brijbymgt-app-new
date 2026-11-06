@@ -39,6 +39,7 @@ class StudentExportAdapter(
 
             if (q.isEmpty()) return@filter true
             s.studentName.lowercase(Locale.getDefault()).contains(q) ||
+            s.fatherName.lowercase(Locale.getDefault()).contains(q) ||
             s.srNumber.lowercase(Locale.getDefault()).contains(q) ||
             s.srNo.lowercase(Locale.getDefault()).contains(q) ||
             s.studentAdhar.lowercase(Locale.getDefault()).contains(q)
@@ -73,6 +74,7 @@ class StudentExportAdapter(
         holder.binding.tvExpSr.text = s.srNo.ifBlank { "${position + 1}" }
         holder.binding.tvExpSrNo.text = s.srNumber.ifBlank { "-" }
         holder.binding.tvExpName.text = s.studentName.ifBlank { "Unnamed" }
+        holder.binding.tvExpFatherName.text = "Father: ${s.fatherName.ifBlank { "-" }}"
         holder.binding.tvExpClass.text = s.studentClass
 
         holder.binding.cbStudentSelect.setOnCheckedChangeListener { _, isChecked ->
@@ -98,4 +100,3 @@ class StudentExportAdapter(
 
     override fun getItemCount() = filteredItems.size
 }
-
