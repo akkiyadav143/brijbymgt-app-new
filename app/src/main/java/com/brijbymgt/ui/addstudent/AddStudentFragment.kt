@@ -65,6 +65,7 @@ class AddStudentFragment : Fragment() {
     private var selectedMotherImagePath: String? = null
     private var activePhotoPicker: String = "student"
     private var editingStudentId: Long = -1L
+    private var wasEditingBeforeSave = false
     private var isNavigatingToListAfterSave = false
 
     private val heightWeightList = mutableListOf<HeightWeightHistoryEntity>()
@@ -542,6 +543,7 @@ class AddStudentFragment : Fragment() {
         binding.btnFormSubmit.setOnClickListener {
             if (validateForm()) {
                 val studentWithDetails = collectFormStudentWithDetails()
+                wasEditingBeforeSave = (editingStudentId != -1L)
                 viewModel.saveStudent(
                     studentWithDetails.student,
                     studentWithDetails.healthDetails,
@@ -729,10 +731,12 @@ class AddStudentFragment : Fragment() {
         val s = item.student
         StudentPreviewHelper.bindStudentPreviewDialog(dialogBinding, item, viewLifecycleOwner)
 
+        dialogBinding.btnPreviewEdit.text = "🖊 Edit Form"
         dialogBinding.btnPreviewEdit.setOnClickListener {
             dialog.dismiss()
         }
 
+        dialogBinding.btnPreviewPrint.text = "🖨 Print / PDF"
         dialogBinding.btnPreviewPrint.setOnClickListener {
             lifecycleScope.launch {
                 val tempFile = File(getCacheProcessDir(), "preview_student.pdf")
@@ -745,7 +749,36 @@ class AddStudentFragment : Fragment() {
             }
         }
 
+        dialogBinding.btnPreviewDelete.text = "🗑 Delete"
+        dialogBinding.btnPreviewDelete.setOnClickListener {
+            dialog.dismiss()
+            AlertDialog.Builder(requireContext())
+                .setTitle("Move to Trash")
+                .setMessage("Are you sure you want to move student '${s.studentName}' to Trash?")
+                .setPositiveButton("Move to Trash") { _, _ ->
+                    lifecycleScope.launch {
+                        val app = requireActivity().application as SchoolApp
+                        val db = app.database
+                        val repo = StudentRepository(
+                            db.studentDao(),
+                            db.healthDetailsDao(),
+                            db.heightWeightHistoryDao(),
+                            db.bankDetailsDao(),
+                            db.mdmReportDao(),
+                            db.documentDao()
+                        )
+                        repo.moveToTrash(s.id)
+                        Toast.makeText(requireContext(), "Student moved to Trash", Toast.LENGTH_SHORT).show()
+                        clearForm()
+                    }
+                }
+                .setNegativeButton("Cancel", null)
+                .show()
+        }
+
+        dialogBinding.btnPreviewClose.text = "📄 View in List"
         dialogBinding.btnPreviewClose.setOnClickListener {
+            wasEditingBeforeSave = (editingStudentId != -1L)
             isNavigatingToListAfterSave = true
             viewModel.saveStudent(
                 item.student,
@@ -769,9 +802,58 @@ class AddStudentFragment : Fragment() {
         val s = item.student
         StudentPreviewHelper.bindStudentPreviewDialog(dialogBinding, item, viewLifecycleOwner)
 
-        dialogBinding.btnPreviewEdit.text = "View in List"
+        dialogBinding.btnPreviewEdit.text = "🖊 Edit Form"
         dialogBinding.btnPreviewEdit.setOnClickListener {
             dialog.dismiss()
+            editingStudentId = item.student.id
+            populateFormForEdit(item)
+            binding.tvFormTitle.text = "EDIT STUDENT RECORD"
+        }
+
+        dialogBinding.btnPreviewPrint.text = "🖨 Print / PDF"
+        dialogBinding.btnPreviewPrint.setOnClickListener {
+            lifecycleScope.launch {
+                val tempFile = File(getCacheProcessDir(), "preview_student.pdf")
+                val stream = tempFile.outputStream()
+                val success = PdfPrintHelper.generateStudentProfilePdf(requireContext(), item, stream)
+                stream.close()
+                if (success) {
+                    PdfPrintHelper.printPdfFile(requireContext(), tempFile, "Print Student ${s.studentName}")
+                }
+            }
+        }
+
+        dialogBinding.btnPreviewDelete.text = "🗑 Delete"
+        dialogBinding.btnPreviewDelete.setOnClickListener {
+            dialog.dismiss()
+            AlertDialog.Builder(requireContext())
+                .setTitle("Move to Trash")
+                .setMessage("Are you sure you want to move student '${s.studentName}' to Trash?")
+                .setPositiveButton("Move to Trash") { _, _ ->
+                    lifecycleScope.launch {
+                        val app = requireActivity().application as SchoolApp
+                        val db = app.database
+                        val repo = StudentRepository(
+                            db.studentDao(),
+                            db.healthDetailsDao(),
+                            db.heightWeightHistoryDao(),
+                            db.bankDetailsDao(),
+                            db.mdmReportDao(),
+                            db.documentDao()
+                        )
+                        repo.moveToTrash(s.id)
+                        Toast.makeText(requireContext(), "Student moved to Trash", Toast.LENGTH_SHORT).show()
+                        clearForm()
+                    }
+                }
+                .setNegativeButton("Cancel", null)
+                .show()
+        }
+
+        dialogBinding.btnPreviewClose.text = "📄 View in List"
+        dialogBinding.btnPreviewClose.setOnClickListener {
+            dialog.dismiss()
+            clearForm()
             try {
                 val bundle = Bundle().apply {
                     putLong("studentId", item.student.id)
@@ -786,24 +868,6 @@ class AddStudentFragment : Fragment() {
             }
         }
 
-        dialogBinding.btnPreviewPrint.setOnClickListener {
-            lifecycleScope.launch {
-                val tempFile = File(getCacheProcessDir(), "preview_student.pdf")
-                val stream = tempFile.outputStream()
-                val success = PdfPrintHelper.generateStudentProfilePdf(requireContext(), item, stream)
-                stream.close()
-                if (success) {
-                    PdfPrintHelper.printPdfFile(requireContext(), tempFile, "Print Student ${s.studentName}")
-                }
-            }
-        }
-
-        dialogBinding.btnPreviewClose.text = "Add New"
-        dialogBinding.btnPreviewClose.setOnClickListener {
-            dialog.dismiss()
-            clearForm()
-        }
-
         dialog.show()
     }
 
@@ -811,7 +875,9 @@ class AddStudentFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.savedStudentWithDetails.collect { studentWithDetails ->
                 studentWithDetails?.let { item ->
-                    Toast.makeText(requireContext(), "Student Record Saved Successfully!", Toast.LENGTH_SHORT).show()
+                    val successMsg = if (wasEditingBeforeSave) "Student Record Updated Successfully!" else "Student Record Saved Successfully!"
+                    Toast.makeText(requireContext(), successMsg, Toast.LENGTH_SHORT).show()
+                    wasEditingBeforeSave = false
                     if (isNavigatingToListAfterSave) {
                         isNavigatingToListAfterSave = false
                         clearForm()
@@ -829,7 +895,6 @@ class AddStudentFragment : Fragment() {
                         }
                     } else {
                         showSavedStudentPreviewDialog(item)
-                        clearForm()
                     }
                 }
             }
