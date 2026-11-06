@@ -267,11 +267,7 @@ class StudentListFragment : Fragment() {
                         if (index != -1) {
                             hasScrolledToTarget = true
                             binding.rvStudentList.scrollToPosition(index)
-                        } else {
-                            binding.rvStudentList.scrollToPosition(0)
                         }
-                    } else {
-                        binding.rvStudentList.scrollToPosition(0)
                     }
                 }
                 val htmlText = "Record Found: <font color='#3FFF00'><b>${list.size}</b></font>"
