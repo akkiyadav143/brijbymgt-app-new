@@ -34,6 +34,7 @@ object StudentPreviewHelper {
         } else {
             binding.tvStudentPhotoBadge.visibility = View.GONE
         }
+        binding.tvPreviewSrNoPhoto.text = "Sr No: ${s.srNo.ifBlank { "-" }}"
 
         // Basic Info
         binding.tvPreviewClass.text = s.studentClass

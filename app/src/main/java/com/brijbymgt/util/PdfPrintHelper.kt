@@ -124,6 +124,9 @@ object PdfPrintHelper {
                         canvas.drawBitmap(it, null, photoRect, null)
                     }
                 }
+                // Sr No below photo in PDF
+                val srNoText = "Sr No: ${s.srNo.ifBlank { "-" }}"
+                canvas.drawText(srNoText, margin + 12f, y + 98f, paintBold)
 
                 // Basic Details Fields Table
                 val textX = margin + 95f
