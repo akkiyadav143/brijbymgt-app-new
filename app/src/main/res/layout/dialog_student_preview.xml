@@ -241,115 +241,123 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:baselineAligned="false"
+                        android:orientation="vertical"
                         android:padding="8dp">
 
-                        <!-- FATHER CARD -->
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="#F8FAFC"
-                            android:padding="6dp"
-                            android:layout_marginEnd="4dp"
                             android:orientation="horizontal"
-                            android:gravity="center_vertical">
+                            android:baselineAligned="false"
+                            android:layout_marginBottom="8dp">
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:gravity="center_horizontal"
-                                android:layout_marginEnd="6dp">
-
-                                <ImageView
-                                    android:id="@+id/ivPreviewFatherPhoto"
-                                    android:layout_width="50dp"
-                                    android:layout_height="60dp"
-                                    android:scaleType="centerCrop"
-                                    android:background="#E2E8F0"
-                                    android:contentDescription="Father Photo" />
-
-                                <TextView
-                                    android:id="@+id/tvFatherPhotoBadge"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="✓ Photo Uploaded"
-                                    android:textSize="8sp"
-                                    android:textStyle="bold"
-                                    android:textColor="#FFFFFF"
-                                    android:background="#2E7D32"
-                                    android:paddingHorizontal="4dp"
-                                    android:paddingVertical="1dp"
-                                    android:layout_marginTop="2dp" />
-                            </LinearLayout>
-
+                            <!-- FATHER CARD -->
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:orientation="vertical">
+                                android:background="#F8FAFC"
+                                android:padding="6dp"
+                                android:layout_marginEnd="4dp"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
 
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Father Name :" android:textStyle="bold" android:textSize="10sp" android:textColor="#475569" />
-                                <TextView android:id="@+id/tvPreviewFatherName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textStyle="bold" android:textSize="11sp" android:textColor="#0F172A" android:layout_marginBottom="2dp" />
-
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Father Aadhaar :" android:textStyle="bold" android:textSize="10sp" android:textColor="#475569" />
-                                <TextView android:id="@+id/tvPreviewFatherAdhar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="11sp" android:textColor="#0F172A" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <!-- MOTHER CARD -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="#F8FAFC"
-                            android:padding="6dp"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:gravity="center_horizontal"
-                                android:layout_marginEnd="6dp">
-
-                                <ImageView
-                                    android:id="@+id/ivPreviewMotherPhoto"
-                                    android:layout_width="50dp"
-                                    android:layout_height="60dp"
-                                    android:scaleType="centerCrop"
-                                    android:background="#E2E8F0"
-                                    android:contentDescription="Mother Photo" />
-
-                                <TextView
-                                    android:id="@+id/tvMotherPhotoBadge"
+                                <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="✓ Photo Uploaded"
-                                    android:textSize="8sp"
-                                    android:textStyle="bold"
-                                    android:textColor="#FFFFFF"
-                                    android:background="#2E7D32"
-                                    android:paddingHorizontal="4dp"
-                                    android:paddingVertical="1dp"
-                                    android:layout_marginTop="2dp" />
+                                    android:orientation="vertical"
+                                    android:gravity="center_horizontal"
+                                    android:layout_marginEnd="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/ivPreviewFatherPhoto"
+                                        android:layout_width="50dp"
+                                        android:layout_height="60dp"
+                                        android:scaleType="centerCrop"
+                                        android:background="#E2E8F0"
+                                        android:contentDescription="Father Photo" />
+
+                                    <TextView
+                                        android:id="@+id/tvFatherPhotoBadge"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="✓ Photo Uploaded"
+                                        android:textSize="8sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#FFFFFF"
+                                        android:background="#2E7D32"
+                                        android:paddingHorizontal="4dp"
+                                        android:paddingVertical="1dp"
+                                        android:layout_marginTop="2dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Father Name :" android:textStyle="bold" android:textSize="10sp" android:textColor="#475569" />
+                                    <TextView android:id="@+id/tvPreviewFatherName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textStyle="bold" android:textSize="11sp" android:textColor="#0F172A" android:layout_marginBottom="2dp" />
+
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Father Aadhaar :" android:textStyle="bold" android:textSize="10sp" android:textColor="#475569" />
+                                    <TextView android:id="@+id/tvPreviewFatherAdhar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="11sp" android:textColor="#0F172A" />
+                                </LinearLayout>
+
                             </LinearLayout>
 
+                            <!-- MOTHER CARD -->
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:orientation="vertical">
+                                android:background="#F8FAFC"
+                                android:padding="6dp"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
 
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mother Name :" android:textStyle="bold" android:textSize="10sp" android:textColor="#475569" />
-                                <TextView android:id="@+id/tvPreviewMotherName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textStyle="bold" android:textSize="11sp" android:textColor="#0F172A" android:layout_marginBottom="2dp" />
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:gravity="center_horizontal"
+                                    android:layout_marginEnd="6dp">
 
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mother Aadhaar :" android:textStyle="bold" android:textSize="10sp" android:textColor="#475569" />
-                                <TextView android:id="@+id/tvPreviewMotherAdhar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="11sp" android:textColor="#0F172A" />
+                                    <ImageView
+                                        android:id="@+id/ivPreviewMotherPhoto"
+                                        android:layout_width="50dp"
+                                        android:layout_height="60dp"
+                                        android:scaleType="centerCrop"
+                                        android:background="#E2E8F0"
+                                        android:contentDescription="Mother Photo" />
+
+                                    <TextView
+                                        android:id="@+id/tvMotherPhotoBadge"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="✓ Photo Uploaded"
+                                        android:textSize="8sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#FFFFFF"
+                                        android:background="#2E7D32"
+                                        android:paddingHorizontal="4dp"
+                                        android:paddingVertical="1dp"
+                                        android:layout_marginTop="2dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mother Name :" android:textStyle="bold" android:textSize="10sp" android:textColor="#475569" />
+                                    <TextView android:id="@+id/tvPreviewMotherName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textStyle="bold" android:textSize="11sp" android:textColor="#0F172A" android:layout_marginBottom="2dp" />
+
+                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mother Aadhaar :" android:textStyle="bold" android:textSize="10sp" android:textColor="#475569" />
+                                    <TextView android:id="@+id/tvPreviewMotherAdhar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="11sp" android:textColor="#0F172A" />
+                                </LinearLayout>
+
                             </LinearLayout>
 
                         </LinearLayout>
@@ -359,11 +367,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:background="#F1F5F9"
-                            android:paddingHorizontal="10dp"
-                            android:paddingVertical="6dp"
-                            android:layout_marginHorizontal="8dp"
-                            android:layout_marginBottom="8dp">
+                            android:background="#F8FAFC"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="6dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -380,7 +386,7 @@
                                 android:layout_weight="1"
                                 android:textStyle="bold"
                                 android:textSize="11sp"
-                                android:textColor="#0F172A"
+                                android:textColor="#1565C0"
                                 android:layout_marginStart="8dp" />
                         </LinearLayout>
 
