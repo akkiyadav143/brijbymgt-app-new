@@ -75,40 +75,6 @@ class AddStudentFragment : Fragment() {
     private var activeAttachingDocType: String = ""
     private var isDocumentReplacement: Boolean = false
     private var replacementDocumentId: Long = -1L
-    private var currentCameraPhotoPath: String? = null
-    private var currentCameraPhotoUri: Uri? = null
-
-    private val takePictureLauncher = registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
-        if (success) {
-            currentCameraPhotoPath?.let { path ->
-                lifecycleScope.launch {
-                    val file = File(path)
-                    if (file.exists()) {
-                        val savedInfo = DocumentStorageHelper.saveDocumentToInternalStorage(
-                            requireContext(),
-                            editingStudentId.takeIf { it > 0 } ?: 0L,
-                            activeAttachingDocType,
-                            Uri.fromFile(file)
-                        )
-                        try { file.delete() } catch (e: Exception) {}
-
-                        if (savedInfo != null) {
-                            val docEntity = DocumentEntity(
-                                id = if (isDocumentReplacement && replacementDocumentId > 0) replacementDocumentId else 0L,
-                                studentId = editingStudentId.takeIf { it > 0 } ?: 0L,
-                                documentType = activeAttachingDocType,
-                                fileName = savedInfo.fileName,
-                                fileUri = savedInfo.absolutePath,
-                                mimeType = savedInfo.mimeType,
-                                fileSize = savedInfo.fileSize
-                            )
-                            handleSavedDocument(activeAttachingDocType, docEntity, isDocumentReplacement, replacementDocumentId)
-                        }
-                    }
-                }
-            }
-        }
-    }
 
     private val pickDocumentLauncher = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri: Uri? ->
         uri?.let { sourceUri ->
@@ -296,31 +262,19 @@ class AddStudentFragment : Fragment() {
         isDocumentReplacement = isReplacement
         replacementDocumentId = docId
 
-        val options = arrayOf("Take Photo", "Choose Image", "Choose PDF / File")
+        val options = arrayOf("Choose Image", "Choose PDF / File")
         AlertDialog.Builder(requireContext())
             .setTitle("Attach $docType (${docsForType.size}/$maxLimit)")
             .setItems(options) { _, which ->
                 when (which) {
-                    0 -> launchCameraForDocument()
-                    1 -> pickDocumentLauncher.launch(arrayOf("image/*"))
-                    2 -> pickDocumentLauncher.launch(arrayOf("application/pdf", "image/*", "*/*"))
+                    0 -> pickDocumentLauncher.launch(arrayOf("image/*"))
+                    1 -> pickDocumentLauncher.launch(arrayOf("application/pdf", "image/*", "*/*"))
                 }
             }
             .show()
     }
 
-    private fun launchCameraForDocument() {
-        val photoFile = File(requireContext().cacheDir, "doc_cam_${System.currentTimeMillis()}.jpg")
-        currentCameraPhotoPath = photoFile.absolutePath
-        currentCameraPhotoUri = FileProvider.getUriForFile(
-            requireContext(),
-            "${requireContext().packageName}.fileprovider",
-            photoFile
-        )
-        currentCameraPhotoUri?.let { uri ->
-            takePictureLauncher.launch(uri)
-        }
-    }
+
 
     private fun handleSavedDocument(docType: String, newDoc: DocumentEntity, isReplacement: Boolean, replaceId: Long) {
         val list = studentDocuments.getOrPut(docType) { mutableListOf() }
