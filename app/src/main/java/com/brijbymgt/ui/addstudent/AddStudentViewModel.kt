@@ -41,11 +41,10 @@ class AddStudentViewModel(private val repository: StudentRepository) : ViewModel
     ) {
         viewModelScope.launch {
             try {
-                repository.saveStudent(student, healthDetails, heightWeightHistory, bankDetails, documents)
-                val allStudents = repository.getAllActiveStudentsSync()
-                val newlyAdded = allStudents.maxByOrNull { it.id } ?: allStudents.lastOrNull()
-                if (newlyAdded != null) {
-                    val details = repository.getStudentWithDetailsById(newlyAdded.id)
+                val savedId = repository.saveStudent(student, healthDetails, heightWeightHistory, bankDetails, documents)
+                val targetId = if (savedId > 0) savedId else (student.id.takeIf { it > 0 } ?: (repository.getAllActiveStudentsSync().maxByOrNull { it.id }?.id ?: 0L))
+                if (targetId > 0) {
+                    val details = repository.getStudentWithDetailsById(targetId)
                     _savedStudentWithDetails.emit(details)
                 }
                 _saveResult.emit(true)
