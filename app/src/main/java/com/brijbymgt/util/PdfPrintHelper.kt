@@ -180,8 +180,8 @@ object PdfPrintHelper {
                 y += 28f
 
                 val halfWidth = (contentWidth - 12f) / 2f
-                val fatherBox = RectF(margin + 4f, y, margin + 4f + halfWidth, y + 60f)
-                val motherBox = RectF(margin + 8f + halfWidth, y, A4_WIDTH - margin - 4f, y + 60f)
+                val fatherBox = RectF(margin + 4f, y, margin + 4f + halfWidth, y + 68f)
+                val motherBox = RectF(margin + 8f + halfWidth, y, A4_WIDTH - margin - 4f, y + 68f)
 
                 canvas.drawRoundRect(fatherBox, 4f, 4f, paintBoxBg)
                 canvas.drawRoundRect(motherBox, 4f, 4f, paintBoxBg)
@@ -190,29 +190,31 @@ object PdfPrintHelper {
                 if (!s.fatherImagePath.isNullOrBlank()) {
                     val fBitmap = ImageStorageHelper.loadBitmapFromPath(s.fatherImagePath)
                     fBitmap?.let {
-                        canvas.drawBitmap(it, null, RectF(fatherBox.left + 6f, y + 5f, fatherBox.left + 50f, y + 55f), null)
+                        canvas.drawBitmap(it, null, RectF(fatherBox.left + 6f, y + 5f, fatherBox.left + 50f, y + 60f), null)
                     }
                 }
                 val fTextX = fatherBox.left + 56f
-                canvas.drawText("Father Name :", fTextX, y + 18f, paintBold)
-                canvas.drawText(s.fatherName.ifBlank { "-" }, fTextX + 75f, y + 18f, paintNormal)
-                canvas.drawText("Father Aadhaar :", fTextX, y + 36f, paintBold)
-                canvas.drawText(s.fatherAdhar.ifBlank { "-" }, fTextX + 75f, y + 36f, paintNormal)
+                canvas.drawText("Father Name :", fTextX, y + 16f, paintBold)
+                canvas.drawText(s.fatherName.ifBlank { "-" }, fTextX + 75f, y + 16f, paintNormal)
+                canvas.drawText("Father Aadhaar :", fTextX, y + 32f, paintBold)
+                canvas.drawText(s.fatherAdhar.ifBlank { "-" }, fTextX + 75f, y + 32f, paintNormal)
+                canvas.drawText("Ration Card :", fTextX, y + 48f, paintBold)
+                canvas.drawText(s.rationCard.ifBlank { "-" }, fTextX + 75f, y + 48f, paintNormal)
 
                 // Mother Photo & Text
                 if (!s.motherImagePath.isNullOrBlank()) {
                     val mBitmap = ImageStorageHelper.loadBitmapFromPath(s.motherImagePath)
                     mBitmap?.let {
-                        canvas.drawBitmap(it, null, RectF(motherBox.left + 6f, y + 5f, motherBox.left + 50f, y + 55f), null)
+                        canvas.drawBitmap(it, null, RectF(motherBox.left + 6f, y + 5f, motherBox.left + 50f, y + 60f), null)
                     }
                 }
                 val mTextX = motherBox.left + 56f
-                canvas.drawText("Mother Name :", mTextX, y + 18f, paintBold)
-                canvas.drawText(s.motherName.ifBlank { "-" }, mTextX + 75f, y + 18f, paintNormal)
-                canvas.drawText("Mother Aadhaar :", mTextX, y + 36f, paintBold)
-                canvas.drawText(s.motherAdhar.ifBlank { "-" }, mTextX + 75f, y + 36f, paintNormal)
+                canvas.drawText("Mother Name :", mTextX, y + 16f, paintBold)
+                canvas.drawText(s.motherName.ifBlank { "-" }, mTextX + 75f, y + 16f, paintNormal)
+                canvas.drawText("Mother Aadhaar :", mTextX, y + 32f, paintBold)
+                canvas.drawText(s.motherAdhar.ifBlank { "-" }, mTextX + 75f, y + 32f, paintNormal)
 
-                y += 68f
+                y += 76f
                 canvas.drawRoundRect(RectF(margin, parentSecStart, A4_WIDTH - margin, y), 6f, 6f, paintBorder)
                 y += 14f
 
@@ -226,22 +228,28 @@ object PdfPrintHelper {
                 canvas.drawText("Included : ${if (isHealth) "Yes" else "No"}", A4_WIDTH - margin - 90f, y + 14f, paintSectionTitle)
                 y += 28f
 
-                val healthBox = RectF(margin + 4f, y, A4_WIDTH - margin - 4f, y + 45f)
+                val healthBox = RectF(margin + 4f, y, A4_WIDTH - margin - 4f, y + 62f)
                 canvas.drawRoundRect(healthBox, 4f, 4f, paintBoxBg)
 
-                val hy1 = y + 16f
+                val hy1 = y + 14f
                 canvas.drawText("Height :", healthBox.left + 8f, hy1, paintBold)
                 canvas.drawText(if (isHealth && h.height.isNotBlank()) "${h.height} cm" else "-", healthBox.left + 70f, hy1, paintNormal)
                 canvas.drawText("Hb Level :", healthBox.left + 260f, hy1, paintBold)
                 canvas.drawText(if (isHealth && h.hb.isNotBlank()) "${h.hb} g/dL" else "-", healthBox.left + 330f, hy1, paintNormal)
 
-                val hy2 = y + 32f
+                val hy2 = y + 28f
                 canvas.drawText("Weight :", healthBox.left + 8f, hy2, paintBold)
                 canvas.drawText(if (isHealth && h.weight.isNotBlank()) "${h.weight} kg" else "-", healthBox.left + 70f, hy2, paintNormal)
                 canvas.drawText("Eye Sight :", healthBox.left + 260f, hy2, paintBold)
                 canvas.drawText(if (isHealth && h.eyeSight.isNotBlank()) h.eyeSight else "-", healthBox.left + 330f, hy2, paintNormal)
 
-                y += 54f
+                val hy3 = y + 42f
+                canvas.drawText("Blood Group :", healthBox.left + 8f, hy3, paintBold)
+                canvas.drawText(if (isHealth && h.bloodGroup.isNotBlank()) h.bloodGroup else "-", healthBox.left + 85f, hy3, paintNormal)
+                canvas.drawText("Deworming :", healthBox.left + 260f, hy3, paintBold)
+                canvas.drawText(if (isHealth && h.deworming.isNotBlank()) h.deworming else "-", healthBox.left + 330f, hy3, paintNormal)
+
+                y += 70f
                 canvas.drawRoundRect(RectF(margin, healthSecStart, A4_WIDTH - margin, y), 6f, 6f, paintBorder)
                 y += 14f
 
@@ -688,7 +696,7 @@ object PdfPrintHelper {
                         return
                     }
                     val builder = PrintAttributes.Builder()
-                        .setMediaSize(PrintAttributes.MediaSize.ISO_A4.asLandscape())
+                        .setMediaSize(PrintAttributes.MediaSize.ISO_A4)
                         .setResolution(PrintAttributes.Resolution("pdf", "pdf", 300, 300))
                     val pInfo = PrintDocumentInfo.Builder(jobName)
                         .setContentType(PrintDocumentInfo.CONTENT_TYPE_DOCUMENT)
@@ -716,7 +724,7 @@ object PdfPrintHelper {
                     }
                 }
             }
-            printManager.print(jobName, printAdapter, PrintAttributes.Builder().setMediaSize(PrintAttributes.MediaSize.ISO_A4.asLandscape()).build())
+            printManager.print(jobName, printAdapter, PrintAttributes.Builder().setMediaSize(PrintAttributes.MediaSize.ISO_A4).build())
         } catch (e: Exception) {
             e.printStackTrace()
         }
