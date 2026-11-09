@@ -158,6 +158,8 @@ class StudentRepository(
                                     val id = (data["id"] as? Number)?.toLong() ?: doc.id.toLongOrNull() ?: 0L
                                     if (id == 0L) continue
 
+                                    val existing = studentDao.getStudentWithDetailsById(id)
+
                                     val isDeleted = data["isDeleted"] as? Boolean ?: false
                                     val deletedAt = (data["deletedAt"] as? Number)?.toLong()
                                     val imageBase64 = data["imageBase64"] as? String
@@ -168,7 +170,7 @@ class StudentRepository(
                                         !imageBase64.isNullOrBlank() -> base64ToFile(imageBase64, "student")
                                         else -> {
                                             val oldPath = data["imagePath"] as? String
-                                            if (!oldPath.isNullOrBlank() && File(oldPath).exists()) oldPath else null
+                                            if (!oldPath.isNullOrBlank() && File(oldPath).exists()) oldPath else existing?.student?.imagePath
                                         }
                                     }
 
@@ -176,7 +178,7 @@ class StudentRepository(
                                         !fatherImageBase64.isNullOrBlank() -> base64ToFile(fatherImageBase64, "father")
                                         else -> {
                                             val oldPath = data["fatherImagePath"] as? String
-                                            if (!oldPath.isNullOrBlank() && File(oldPath).exists()) oldPath else null
+                                            if (!oldPath.isNullOrBlank() && File(oldPath).exists()) oldPath else existing?.student?.fatherImagePath
                                         }
                                     }
 
@@ -184,26 +186,34 @@ class StudentRepository(
                                         !motherImageBase64.isNullOrBlank() -> base64ToFile(motherImageBase64, "mother")
                                         else -> {
                                             val oldPath = data["motherImagePath"] as? String
-                                            if (!oldPath.isNullOrBlank() && File(oldPath).exists()) oldPath else null
+                                            if (!oldPath.isNullOrBlank() && File(oldPath).exists()) oldPath else existing?.student?.motherImagePath
                                         }
                                     }
 
                                     val student = StudentEntity(
                                         id = id,
-                                        srNumber = data["srNumber"] as? String ?: "",
-                                        uniqueId = data["uniqueId"] as? String ?: "",
-                                        studentName = data["studentName"] as? String ?: "",
-                                        fatherName = data["fatherName"] as? String ?: "",
-                                        motherName = data["motherName"] as? String ?: "",
-                                        studentClass = data["studentClass"] as? String ?: "Class 1",
-                                        gender = data["gender"] as? String ?: "Male",
-                                        caste = data["caste"] as? String ?: "GEN",
-                                        dob = data["dob"] as? String ?: "",
-                                        mobileNo = data["mobileNo"] as? String ?: "",
-                                        studentAdhar = data["studentAdhar"] as? String ?: "",
-                                        aaparId = data["aaparId"] as? String ?: "",
-                                        dbt = data["dbt"] as? String ?: "No",
-                                        address = data["address"] as? String ?: "",
+                                        srNo = (data["srNo"] as? String) ?: (existing?.student?.srNo ?: ""),
+                                        srNumber = (data["srNumber"] as? String) ?: (existing?.student?.srNumber ?: ""),
+                                        uniqueId = (data["uniqueId"] as? String) ?: (existing?.student?.uniqueId ?: ""),
+                                        penNo = (data["penNo"] as? String) ?: (existing?.student?.penNo ?: ""),
+                                        aaparId = (data["aaparId"] as? String) ?: (existing?.student?.aaparId ?: ""),
+                                        dbt = (data["dbt"] as? String) ?: (existing?.student?.dbt ?: "No"),
+                                        studentClass = (data["studentClass"] as? String) ?: (existing?.student?.studentClass ?: "Class 1"),
+                                        studentName = (data["studentName"] as? String) ?: (existing?.student?.studentName ?: ""),
+                                        dob = (data["dob"] as? String) ?: (existing?.student?.dob ?: ""),
+                                        admissionDate = (data["admissionDate"] as? String) ?: (existing?.student?.admissionDate ?: ""),
+                                        studentAdhar = (data["studentAdhar"] as? String) ?: (existing?.student?.studentAdhar ?: ""),
+                                        co = (data["co"] as? String) ?: (existing?.student?.co ?: ""),
+                                        gender = (data["gender"] as? String) ?: (existing?.student?.gender ?: "Male"),
+                                        caste = (data["caste"] as? String) ?: (existing?.student?.caste ?: "GEN"),
+                                        fatherName = (data["fatherName"] as? String) ?: (existing?.student?.fatherName ?: ""),
+                                        fatherAdhar = (data["fatherAdhar"] as? String) ?: (existing?.student?.fatherAdhar ?: ""),
+                                        motherName = (data["motherName"] as? String) ?: (existing?.student?.motherName ?: ""),
+                                        motherAdhar = (data["motherAdhar"] as? String) ?: (existing?.student?.motherAdhar ?: ""),
+                                        mobileNo = (data["mobileNo"] as? String) ?: (existing?.student?.mobileNo ?: ""),
+                                        address = (data["address"] as? String) ?: (existing?.student?.address ?: ""),
+                                        other = (data["other"] as? String) ?: (existing?.student?.other ?: ""),
+                                        rationCard = (data["rationCard"] as? String) ?: (existing?.student?.rationCard ?: ""),
                                         imagePath = localImagePath,
                                         fatherImagePath = localFatherPath,
                                         motherImagePath = localMotherPath,
@@ -211,7 +221,6 @@ class StudentRepository(
                                         deletedAt = deletedAt
                                     )
 
-                                    val existing = studentDao.getStudentWithDetailsById(id)
                                     if (existing == null) {
                                         studentDao.insertStudent(student)
                                     } else {
@@ -226,7 +235,10 @@ class StudentRepository(
                                             hasHealthDetails = true,
                                             bloodGroup = healthMap["bloodGroup"] as? String ?: "",
                                             height = healthMap["height"] as? String ?: "",
-                                            weight = healthMap["weight"] as? String ?: ""
+                                            weight = healthMap["weight"] as? String ?: "",
+                                            hb = healthMap["hb"] as? String ?: "",
+                                            eyeSight = healthMap["eyeSight"] as? String ?: "",
+                                            deworming = healthMap["deworming"] as? String ?: ""
                                         )
                                         healthDetailsDao.insertHealthDetails(healthEntity)
                                     }
@@ -363,20 +375,28 @@ class StudentRepository(
                 val firestore = FirebaseFirestore.getInstance()
                 val studentMap = hashMapOf<String, Any>(
                     "id" to studentId,
+                    "srNo" to student.srNo,
                     "srNumber" to student.srNumber,
                     "uniqueId" to student.uniqueId,
-                    "studentName" to student.studentName,
-                    "fatherName" to student.fatherName,
-                    "motherName" to student.motherName,
-                    "studentClass" to student.studentClass,
-                    "gender" to student.gender,
-                    "caste" to student.caste,
-                    "dob" to student.dob,
-                    "mobileNo" to student.mobileNo,
-                    "studentAdhar" to student.studentAdhar,
+                    "penNo" to student.penNo,
                     "aaparId" to student.aaparId,
                     "dbt" to student.dbt,
+                    "studentClass" to student.studentClass,
+                    "studentName" to student.studentName,
+                    "dob" to student.dob,
+                    "admissionDate" to student.admissionDate,
+                    "studentAdhar" to student.studentAdhar,
+                    "co" to student.co,
+                    "gender" to student.gender,
+                    "caste" to student.caste,
+                    "fatherName" to student.fatherName,
+                    "fatherAdhar" to student.fatherAdhar,
+                    "motherName" to student.motherName,
+                    "motherAdhar" to student.motherAdhar,
+                    "mobileNo" to student.mobileNo,
                     "address" to student.address,
+                    "other" to student.other,
+                    "rationCard" to student.rationCard,
                     "imagePath" to (student.imagePath ?: ""),
                     "imageBase64" to uriOrPathToBase64(student.imagePath),
                     "fatherImagePath" to (student.fatherImagePath ?: ""),
@@ -390,7 +410,10 @@ class StudentRepository(
                             "hasHealthDetails" to it.hasHealthDetails,
                             "bloodGroup" to it.bloodGroup,
                             "height" to it.height,
-                            "weight" to it.weight
+                            "weight" to it.weight,
+                            "hb" to it.hb,
+                            "eyeSight" to it.eyeSight,
+                            "deworming" to it.deworming
                         )
                     } ?: mapOf()),
                     "bankDetails" to (bankDetails?.let {

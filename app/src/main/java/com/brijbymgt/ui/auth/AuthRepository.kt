@@ -252,53 +252,38 @@ class AuthRepository(context: Context) {
         val userName = if (fullName.isNotBlank()) fullName else (savedData?.second ?: "")
         val userMobile = if (mobile.isNotBlank()) mobile else (savedData?.third ?: "")
 
-        Log.i(TAG, "sendOtpApi initiated: email=$cleanEmail, name=$userName, mobile=$userMobile, uid=$userUid, isRegister=$isRegister")
+        Log.i(TAG, "sendOtpApi initiated: email=$cleanEmail, name=$userName, mobile=$userMobile, isRegister=$isRegister")
 
-        val endpoints = if (isRegister) {
-            listOf(
-                "https://brijbymgt.com/api/register",
-                "https://brijbymgt.com/api/signup",
-                "https://brijbymgt.com/api/create-account",
-                "https://brijbymgt.com/api/send-otp"
-            )
-        } else {
-            listOf(
-                "https://brijbymgt.com/api/send-otp"
-            )
-        }
-
+        val endpoint = "https://brijbymgt.com/api/send-otp"
         var lastErrorMsg = "Failed to send OTP"
 
-        for (endpoint in endpoints) {
-            try {
-                val url = URL(endpoint)
-                val connection = (url.openConnection() as HttpURLConnection).apply {
-                    requestMethod = "POST"
-                    setRequestProperty("Content-Type", "application/json; charset=utf-8")
-                    setRequestProperty("Accept", "application/json")
-                    doOutput = true
-                    connectTimeout = 15000
-                    readTimeout = 15000
-                }
+        try {
+            val url = URL(endpoint)
+            val connection = (url.openConnection() as HttpURLConnection).apply {
+                requestMethod = "POST"
+                setRequestProperty("Content-Type", "application/json; charset=utf-8")
+                setRequestProperty("Accept", "application/json")
+                doOutput = true
+                connectTimeout = 15000
+                readTimeout = 15000
+            }
 
-                val jsonParam = JSONObject().apply {
-                    put("email", cleanEmail)
+            val jsonParam = JSONObject().apply {
+                put("email", cleanEmail)
+                if (isRegister) {
+                    put("type", "register")
                     if (userName.isNotBlank()) put("name", userName)
                     if (userMobile.isNotBlank()) put("mobile", userMobile)
-                    if (userUid.isNotBlank()) put("uid", userUid)
-                    if (isRegister) {
-                        put("type", "register")
-                        put("action", "register")
-                        put("is_register", true)
-                        put("signup", true)
-                    }
+                } else {
+                    put("type", "otp")
                 }
+            }
 
-                Log.i(TAG, "POST Payload to $endpoint: $jsonParam")
+            Log.i(TAG, "POST Payload to $endpoint: $jsonParam")
 
-                connection.outputStream.use { os ->
-                    os.write(jsonParam.toString().toByteArray(Charsets.UTF_8))
-                }
+            connection.outputStream.use { os ->
+                os.write(jsonParam.toString().toByteArray(Charsets.UTF_8))
+            }
 
                 val responseCode = connection.responseCode
                 val stream = if (responseCode in 200..299) connection.inputStream else connection.errorStream
@@ -345,40 +330,8 @@ class AuthRepository(context: Context) {
                 Log.e(TAG, "Endpoint $endpoint Exception: ${e.message}", e)
                 lastErrorMsg = e.localizedMessage ?: "Network error occurred"
             }
-        }
 
         return ApiResult.Error(lastErrorMsg)
-    }
-
-    fun saveUserDetailsToDatabaseThenRequestOtp(
-        fullName: String,
-        email: String,
-        mobile: String
-    ): ApiResult {
-        val cleanEmail = email.lowercase().trim()
-        val uid = registerUser(fullName, cleanEmail, mobile)
-
-        val result = sendOtpApi(
-            email = cleanEmail,
-            fullName = fullName,
-            mobile = mobile,
-            uid = uid,
-            isRegister = true
-        )
-
-        if (result is ApiResult.Error) {
-            // Clean up unverified registration from local storage if API call fails
-            prefs.edit().apply {
-                remove(PREFS_REGISTERED_USERS + cleanEmail)
-                remove("user_data_${cleanEmail}_name")
-                remove("user_data_${cleanEmail}_mobile")
-                remove("user_data_${cleanEmail}_uid")
-                remove("user_data_${cleanEmail}_reg_date")
-                apply()
-            }
-        }
-
-        return result
     }
 
     fun verifyOtpApi(email: String, otp: String): ApiResult {
